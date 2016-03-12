@@ -19,6 +19,7 @@ startMeasurement = False # When true, next lines can be considered to be part of
 newLineCount = 0 # Counts the number of new lines (measurements are separated by 2 new lines)
 cornerMatrix = [] # Contains all of the extracted corner measurements
 currentMeasurement = [] # Contains the measurement currently being extracted
+refMeasurements = [[1.4, 0.1], [1.5, 0.7], [-0.75, 0.7], [0, -0.7], [0.85, -0.7], [1.3, -0.35]] # reference data which is considered correct (from camera)
 
 # Looping over each line in file
 for line in lines:
