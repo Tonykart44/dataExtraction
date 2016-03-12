@@ -6,9 +6,6 @@ Created on Wed Mar  9 12:00:30 2016
 
 File that extraxts data from txt file that contains getFeature data
 """
-import numpy as np
-
-
 # Opening file and reading contents
 
 filePath = '/home/robin/Bureaublad/getFeatureCalibratieData.txt'
