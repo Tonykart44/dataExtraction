@@ -6,6 +6,7 @@ Created on Wed Mar  9 12:00:30 2016
 
 File that extraxts data from txt file that contains getFeature data from txt files
 """
+import math
 """
 DEFINING FUNCTIONS
 """
@@ -27,9 +28,13 @@ def checkReference(reference, data, accuracy):
     """
     
     for ref in reference:
-        print(ref)
-        for dat in data:
-            print(dat)
+        for ref_point in ref:
+            print(ref_point)
+            for dat in data:
+                for dat_point in dat:
+                    print(dat_point)
+                    
+            # distance = math.sqrt(math.pow(ref,2) - math.pow(dat,2)) 
 
 # Opening file and reading contents
 filePath = '/home/robin/Bureaublad/getFeatureCalibratieData.txt'
