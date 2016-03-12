@@ -2,9 +2,9 @@
 """
 Created on Wed Mar  9 12:00:30 2016
 
-@author: robin
+@author: Robin Amsters
 
-File that extraxts data from txt file that contains getFeature data
+File that extraxts data from txt file that contains getFeature data from txt files
 """
 
 
@@ -17,13 +17,14 @@ lines = lines[0:]
 # Defining variables
 startMeasurement = False # When true, next lines can be considered to be part of the same measurement
 newLineCount = 0 # Counts the number of new lines (measurements are separated by 2 new lines)
-cornerMatrix = []
-currentMeasurement = []
+cornerMatrix = [] # Contains all of the extracted corner measurements
+currentMeasurement = [] # Contains the measurement currently being extracted
 
 # Looping over each line in file
 for line in lines:
     
     if line.count(' ') and startMeasurement:
+        # If the line contains a space and the measurement has started, add this line to the currentMeasurement matrix
         currentMeasurement.append(line.split())
         newLineCount = 0
     
@@ -38,6 +39,7 @@ for line in lines:
         newLineCount += 1
     
     if newLineCount >= 2 and startMeasurement:
+        # Measurements are separated by two newlines
         cornerMatrix.append(currentMeasurement)
         currentMeasurement = []
         startMeasurement = False
