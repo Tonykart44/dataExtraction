@@ -6,12 +6,13 @@ Created on Wed Mar  9 12:00:30 2016
 
 File that extraxts data from txt file that contains getFeature data
 """
-# Opening file and reading contents
 
+
+# Opening file and reading contents
 filePath = '/home/robin/Bureaublad/getFeatureCalibratieData.txt'
 fileHandle = open(filePath, 'r')
 lines = fileHandle.readlines()
-lines = lines[0:30]
+lines = lines[0:]
 
 # Defining variables
 startMeasurement = False # When true, next lines can be considered to be part of the same measurement
