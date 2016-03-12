@@ -22,8 +22,6 @@ currentMeasurement = []
 
 # Looping over each line in file
 for line in lines:
-
-    print(line)
     
     if line.count(' ') and startMeasurement:
         currentMeasurement.append(line.split())
@@ -44,9 +42,4 @@ for line in lines:
         currentMeasurement = []
         startMeasurement = False
         newLineCount = 0
-        
- 
-    print(startMeasurement)
-    print(newLineCount)
-    
     
