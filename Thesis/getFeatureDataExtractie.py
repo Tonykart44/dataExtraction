@@ -45,4 +45,25 @@ for line in lines:
         currentMeasurement = []
         startMeasurement = False
         newLineCount = 0
+
+"""
+DEFINING FUNCTIONS
+"""
+
+def checkReference(reference, data, accuracy):
+    """
+    A function to check wheter a dataset matches the reference close enough
     
+        INPUTS:
+                reference: reference to match data against, this is a list
+                           containing an arbitrary amount of lists of size 2
+                data: data to be matched with the reference, 
+                      this is a list of size 2
+                accuracy: parameter that specifies how much data can differ 
+                          from reference and still be accepted
+    
+        OUTPUTS
+                matchedData: ???
+    """
+    
+    pass    
