@@ -57,10 +57,9 @@ def getMeasurements(filePath):
     """    
     # Defining local variables
 
-    # Opening file and reading contents
-    fileHandle = open(filePath, 'r')
-    lines = fileHandle.readlines()
-    lines = lines[0:]
+    fileHandle = open(filePath, 'r') #Internal name for file
+    lines = fileHandle.readlines() #All lines in the file
+    lines = lines[0:] #While debugging sometimes not the entire file is used
     
     startMeasurement = False # When true, next lines can be considered to be part of the same measurement
     newLineCount = 0 # Counts the number of new lines (measurements are separated by 2 new lines)
@@ -103,7 +102,7 @@ filePath = '/home/robin/Bureaublad/getFeatureCalibratieData.txt'
 refMeasurements = [[1.5405, 0.6808], [1.3355, -0.3614], [0.8496, -0.7070]] # reference data which is considered correct (from camera)
 goodMeasurements = [] # Measurements which are not due to random noise
 
-cornerMatrix = getMeasurements(filePath)
+corners = getMeasurements(filePath) #List containing all corner measurements
 
 
 
