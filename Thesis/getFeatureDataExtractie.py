@@ -12,9 +12,9 @@ DEFINING FUNCTIONS
 """
 def checkReference(reference, data, accuracy):
     """
-    A function to check whether a dataset matches the reference close enough
+    Function to check whether a dataset matches the reference close enough
     
-        INPUTS:
+        INPUT:
                 reference: reference to match data against, this is a list
                            containing an arbitrary amount of lists of size 2
                 data: data to be matched with the reference, 
@@ -22,7 +22,7 @@ def checkReference(reference, data, accuracy):
                 accuracy: parameter that specifies how much data can differ 
                           from reference and still be accepted as matching
     
-        OUTPUTS
+        OUTPUT
                 matchedData: a list containing lists of size 2 of data that has
                              been checked against the reference and accepted
                              according to the specified accuracy
@@ -57,12 +57,12 @@ def checkReference(reference, data, accuracy):
    
 def getMeasurements(filePath):
     """
-    A function that extracts measurements from a .txt file    
+    Function that extracts measurements from a .txt file    
 
-    INPUTS:
+    INPUT:
             filePath: full path of the file to be read
     
-    OUTPUTS:
+    OUTPUT:
             allMeasurements: list containing the all the measurements as smaller lists
     
     """    
@@ -103,6 +103,41 @@ def getMeasurements(filePath):
             newLineCount = 0
             
     return allMeasurements
+    
+def splitMeasurements(filteredMeasurements):
+    """
+    Function that splits filtered data from checkMeasurement into separate 
+    lists of measurements that are of the same point.
+    
+    INPUT:
+          filteredMeasurements: list of lists of len 3 of lists of len 2    
+                                (as returned by checkReference)
+    
+    OUTPUT:
+          measurements_point_A: measurements that correspond to one point "A"
+          measurements_point_B: measurements that correspond to one point "B"
+          measurements_point_C: measurements that correspond to one point "C"
+    """
+    # Initializing variables
+    measurements_point_A = []
+    measurements_point_B = []
+    measurements_point_C = []    
+    
+    # Input handeling
+    if not isinstance(filteredMeasurements, list):
+        print("filteredMeasurements is not a list")
+    elif not isinstance(filteredMeasurements, list):
+        print("The first element of filteredMeasurements is not a list")
+    elif len(filteredMeasurements[0]) > 3:
+        print("Length of filteredMeasurements is greater than 3, only first three measurements will be selected")
+    else:
+        for filteredMeasurement in filteredMeasurements:
+            measurements_point_A.append(filteredMeasurement[0])
+            measurements_point_B.append(filteredMeasurement[1])
+            measurements_point_C.append(filteredMeasurement[2])
+                
+    
+    return measurements_point_A, measurements_point_B, measurements_point_C
 
 """ 
 MAIN SCRIPT: USING FUNCTIONS TO EXTRACT DATA
@@ -114,6 +149,7 @@ refMeasurements = [[1.5405, 0.6808], [1.3355, -0.3614], [0.8496, -0.7070]] # ref
 
 corners = getMeasurements(filePath) #List containing all corner measurements
 filteredCorners = checkReference(refMeasurements, corners, 0.2) # Measurements which are not due to random noise
+measurements_point_A, measurements_point_B, measurements_point_C = splitMeasurements(filteredCorners) #Split filtered corners in list of points tha belong together
 
 
 
