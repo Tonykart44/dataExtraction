@@ -18,7 +18,7 @@ def checkReference(reference, data, accuracy):
                 reference: reference to match data against, this is a list
                            containing an arbitrary amount of lists of size 2
                 data: data to be matched with the reference, 
-                      this is a list of size 2
+                      this is a list of lists of size 2
                 accuracy: parameter that specifies how much data can differ 
                           from reference and still be accepted
     
@@ -26,24 +26,31 @@ def checkReference(reference, data, accuracy):
                 matchedData: ???
     """
     matchedData = []    
-   
-    for ref in reference:
-        for ref_point in ref:
-            for dat in data:
-                currentData = []
-                print("matchedData: ", matchedData)
-                for dat_point in dat:
-                    diff = float(ref_point) - float(dat_point)
-                    distance = math.sqrt(math.pow(diff,2.0))
-                    print("currentData: ", currentData)                    
-                    print("dat_point: ", dat_point)
-                    if abs(distance) <= accuracy and dat_point not in currentData:
-                        currentData.append(dat_point)
-                    if len(currentData) == 2:
-                        matchedData.append(currentData)
-                        
-    return matchedData
     
+    for measurement in data:
+        matchedPoint = []
+        for point in measurement:
+            x_p = point[0]
+            y_p = point[1]
+            for ref in reference:
+                x_ref = ref[0]
+                y_ref = ref[1]
+                
+                diff_x = float(x_p) - float(x_ref)
+                diff_y = float(y_p) - float(y_ref)
+                
+                distance = math.sqrt(math.pow(diff_x, 2) + math.pow(diff_y, 2))
+                
+                print matchedPoint
+                
+                if distance <= accuracy and point not in matchedData:
+                    matchedPoint.append(point)
+                    
+                if len(matchedPoint) == len(reference) and matchedPoint not in matchedData:
+                    matchedData.append(matchedPoint)
+
+    return matchedData
+   
 def getMeasurements(filePath):
     """
     A function that extracts measurements from a .txt file    
@@ -100,9 +107,9 @@ MAIN SCRIPT: USING FUNCTIONS TO EXTRACT DATA
 # Defining variables
 filePath = '/home/robin/Bureaublad/getFeatureCalibratieData.txt'
 refMeasurements = [[1.5405, 0.6808], [1.3355, -0.3614], [0.8496, -0.7070]] # reference data which is considered correct (from camera)
-goodMeasurements = [] # Measurements which are not due to random noise
 
 corners = getMeasurements(filePath) #List containing all corner measurements
+goodMeasurements = checkReference(refMeasurements, corners, 0.2) # Measurements which are not due to random noise
 
 
 
