@@ -147,10 +147,14 @@ MAIN SCRIPT: USING FUNCTIONS TO EXTRACT DATA
 filePath = '/home/robin/Bureaublad/getFeatureCalibratieData.txt'
 refMeasurements = [[1.5405, 0.6808], [1.3355, -0.3614], [0.8496, -0.7070]] # reference data which is considered correct (from camera)
 
-corners = getMeasurements(filePath) #List containing all corner measurements
-filteredCorners = checkReference(refMeasurements, corners, 0.2) # Measurements which are not due to random noise
-measurements_point_A, measurements_point_B, measurements_point_C = splitMeasurements(filteredCorners) #Split filtered corners in list of points tha belong together
+#List containing all corner measurements
+corners = getMeasurements(filePath) 
 
+# Measurements which are not due to random noise
+filteredCorners = checkReference(refMeasurements, corners, 0.2) 
+
+#Split filtered corners in list of points that belong together
+measurements_point_A, measurements_point_B, measurements_point_C = splitMeasurements(filteredCorners) 
 
 
         
