@@ -47,7 +47,6 @@ def checkReference(reference, data, accuracy):
                                
                 if distance <= accuracy and point not in matchedPoint:
                 # Add current point to matched points if accepted and not already in matchedPoint
-                    print(matchedPoint)
                     matchedPoint.append(point)
                     
                 if len(matchedPoint) == len(reference) and matchedPoint not in matchedData:
