@@ -55,6 +55,13 @@ def checkReference(reference, data, accuracy):
 
     return matchedData
    
+def getDistribution():
+    """
+    Function that fits a normal distribution to data
+    ??? DATA X/Y or X and Y ???
+    """
+    pass   
+   
 def getMeasurements(filePath):
     """
     Function that extracts measurements from a .txt file    
