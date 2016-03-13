@@ -47,6 +47,7 @@ def checkReference(reference, data, accuracy):
                                
                 if distance <= accuracy and point not in matchedPoint:
                 # Add current point to matched points if accepted and not already in matchedPoint
+                    print(matchedPoint)
                     matchedPoint.append(point)
                     
                 if len(matchedPoint) == len(reference) and matchedPoint not in matchedData:
@@ -113,7 +114,7 @@ filePath = '/home/robin/Bureaublad/getFeatureCalibratieData.txt'
 refMeasurements = [[1.5405, 0.6808], [1.3355, -0.3614], [0.8496, -0.7070]] # reference data which is considered correct (from camera)
 
 corners = getMeasurements(filePath) #List containing all corner measurements
-filteredCorners = checkReference(refMeasurements, corners, 1) # Measurements which are not due to random noise
+filteredCorners = checkReference(refMeasurements, corners, 0.2) # Measurements which are not due to random noise
 
 
 
