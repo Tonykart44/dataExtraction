@@ -111,6 +111,25 @@ def getMeasurements(filePath):
             
     return allMeasurements
     
+def getSublistElements(masterList, index):
+    """
+    Function that returns all elements from sublists in a masterlist at index
+    
+    INPUT:
+        masterlist: list that has one level of sublists from which elements
+                    have to be selected
+        index: index of elements in sublist that have to be returned
+        
+    OUTPUT:
+        sublistElements: elements of sublists at index 
+    """
+    sublistElements = []    
+    
+    for sublist in masterList:
+        sublistElements.append(sublist[index])
+    ()
+    return sublistElements
+    
 def splitMeasurements(filteredMeasurements):
     """
     Function that splits filtered data from checkMeasurement into separate 
@@ -163,5 +182,14 @@ filteredCorners = checkReference(refMeasurements, corners, 0.2)
 #Split filtered corners in list of points that belong together
 measurements_point_A, measurements_point_B, measurements_point_C = splitMeasurements(filteredCorners) 
 
+# Extracting x and y coordinates from split corners
+x_A = getSublistElements(measurements_point_A, 0)
+y_A = getSublistElements(measurements_point_A, 1)
+
+x_B = getSublistElements(measurements_point_B, 0)
+y_B = getSublistElements(measurements_point_B, 1)
+
+x_C = getSublistElements(measurements_point_C, 0)
+y_C = getSublistElements(measurements_point_C, 1)
 
         
