@@ -27,15 +27,18 @@ def checkReference(reference, data, accuracy):
                 matchedData: ???
     """
     matchedData = []    
-    
+   
     for ref in reference:
         for ref_point in ref:
             for dat in data:
                 currentData = []
+                print("matchedData: ", matchedData)
                 for dat_point in dat:
                     diff = float(ref_point) - float(dat_point)
                     distance = math.sqrt(math.pow(diff,2.0))
-                    if abs(distance) <= accuracy:
+                    print("currentData: ", currentData)                    
+                    print("dat_point: ", dat_point)
+                    if abs(distance) <= accuracy and dat_point not in currentData:
                         currentData.append(dat_point)
                     if len(currentData) == 2:
                         matchedData.append(currentData)
@@ -46,14 +49,14 @@ def checkReference(reference, data, accuracy):
 filePath = '/home/robin/Bureaublad/getFeatureCalibratieData.txt'
 fileHandle = open(filePath, 'r')
 lines = fileHandle.readlines()
-lines = lines[0:100]
+lines = lines[0:20]
 
 # Defining variables
 startMeasurement = False # When true, next lines can be considered to be part of the same measurement
 newLineCount = 0 # Counts the number of new lines (measurements are separated by 2 new lines)
 cornerMatrix = [] # Contains all of the extracted corner measurements
 currentMeasurement = [] # Contains the measurement currently being extracted
-refMeasurements = [[1.4, 0.1], [1.5, 0.7], [-0.75, 0.7], [0, -0.7], [0.85, -0.7], [1.3, -0.35]] # reference data which is considered correct (from camera)
+refMeasurements = [[1.5405, 0.6808], [1.3355, -0.3614], [0.8496, -0.7070]] # reference data which is considered correct (from camera)
 goodMeasurements = [] # Measurements which are not due to random noise
 
 # Looping over each line in file
@@ -77,7 +80,7 @@ for line in lines:
     if newLineCount >= 2 and startMeasurement:
         # Measurements are separated by two newlines
         cornerMatrix.append(currentMeasurement)
-        goodMeasurements.append(checkReference(refMeasurements, currentMeasurement,1))
+        goodMeasurements.append(checkReference(refMeasurements, currentMeasurement, 0.5))
         currentMeasurement = []
         startMeasurement = False
         newLineCount = 0
