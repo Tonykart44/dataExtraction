@@ -18,7 +18,7 @@ def checkReference(reference, data, accuracy):
                 reference: reference to match data against, this is a list
                            containing an arbitrary amount of lists of size 2
                 data: data to be matched with the reference, 
-                      this is a list containing lists of size 2
+                      this is a list containing lists containing lists of len 2
                 accuracy: parameter that specifies how much data can differ 
                           from reference and still be accepted as matching
     
@@ -28,7 +28,8 @@ def checkReference(reference, data, accuracy):
                              according to the specified accuracy
                              
     """
-    matchedData = [] 
+    # Variables
+    matchedData = []  
     
     for measurement in data:
         matchedPoint = [] #datapoints (list of len 2) that have been matched
@@ -44,7 +45,7 @@ def checkReference(reference, data, accuracy):
                 
                 distance = math.sqrt(math.pow(diff_x, 2) + math.pow(diff_y, 2)) 
                                
-                if distance <= accuracy and point not in matchedData:
+                if distance <= accuracy and point not in matchedPoint:
                 # Add current point to matched points if accepted and not already in matchedPoint
                     matchedPoint.append(point)
                     
@@ -112,7 +113,7 @@ filePath = '/home/robin/Bureaublad/getFeatureCalibratieData.txt'
 refMeasurements = [[1.5405, 0.6808], [1.3355, -0.3614], [0.8496, -0.7070]] # reference data which is considered correct (from camera)
 
 corners = getMeasurements(filePath) #List containing all corner measurements
-goodMeasurements = checkReference(refMeasurements, corners, 0.2) # Measurements which are not due to random noise
+filteredCorners = checkReference(refMeasurements, corners, 1) # Measurements which are not due to random noise
 
 
 
