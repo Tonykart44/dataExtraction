@@ -18,35 +18,38 @@ def checkReference(reference, data, accuracy):
                 reference: reference to match data against, this is a list
                            containing an arbitrary amount of lists of size 2
                 data: data to be matched with the reference, 
-                      this is a list of lists of size 2
+                      this is a list containing lists of size 2
                 accuracy: parameter that specifies how much data can differ 
-                          from reference and still be accepted
+                          from reference and still be accepted as matching
     
         OUTPUTS
-                matchedData: ???
+                matchedData: a list containing lists of size 2 of data that has
+                             been checked against the reference and accepted
+                             according to the specified accuracy
+                             
     """
-    matchedData = []    
+    matchedData = [] 
     
     for measurement in data:
-        matchedPoint = []
+        matchedPoint = [] #datapoints (list of len 2) that have been matched
         for point in measurement:
-            x_p = point[0]
-            y_p = point[1]
+            x_p = point[0] #measured x coordinates
+            y_p = point[1] #measured y coordinates
             for ref in reference:
-                x_ref = ref[0]
-                y_ref = ref[1]
+                x_ref = ref[0] #reference x coordinates
+                y_ref = ref[1] #reference u coordinates
                 
-                diff_x = float(x_p) - float(x_ref)
-                diff_y = float(y_p) - float(y_ref)
+                diff_x = float(x_p) - float(x_ref) #difference in x coordinates
+                diff_y = float(y_p) - float(y_ref) #difference in y coordinates
                 
-                distance = math.sqrt(math.pow(diff_x, 2) + math.pow(diff_y, 2))
-                
-                print matchedPoint
-                
+                distance = math.sqrt(math.pow(diff_x, 2) + math.pow(diff_y, 2)) 
+                               
                 if distance <= accuracy and point not in matchedData:
+                # Add current point to matched points if accepted and not already in matchedPoint
                     matchedPoint.append(point)
                     
                 if len(matchedPoint) == len(reference) and matchedPoint not in matchedData:
+                # Add points to data when all have been matched against a reference and they are not yet in matchedData
                     matchedData.append(matchedPoint)
 
     return matchedData
