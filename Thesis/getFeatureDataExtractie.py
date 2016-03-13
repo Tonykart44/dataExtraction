@@ -10,7 +10,6 @@ import math
 """
 DEFINING FUNCTIONS
 """
-
 def checkReference(reference, data, accuracy):
     """
     A function to check whether a dataset matches the reference close enough
@@ -44,46 +43,68 @@ def checkReference(reference, data, accuracy):
                         matchedData.append(currentData)
                         
     return matchedData
+    
+def getMeasurements(filePath):
+    """
+    A function that extracts measurements from a .txt file    
 
-# Opening file and reading contents
-filePath = '/home/robin/Bureaublad/getFeatureCalibratieData.txt'
-fileHandle = open(filePath, 'r')
-lines = fileHandle.readlines()
-lines = lines[0:20]
+    INPUTS:
+            filePath: full path of the file to be read
+    
+    OUTPUTS:
+            allMeasurements: list containing the all the measurements as smaller lists
+    
+    """    
+    # Defining local variables
+
+    # Opening file and reading contents
+    fileHandle = open(filePath, 'r')
+    lines = fileHandle.readlines()
+    lines = lines[0:]
+    
+    startMeasurement = False # When true, next lines can be considered to be part of the same measurement
+    newLineCount = 0 # Counts the number of new lines (measurements are separated by 2 new lines)
+    allMeasurements = [] # Contains all of the extracted corner measurements
+    currentMeasurement = [] # Contains the measurement currently being extracted
+    
+    for line in lines:
+    # Looping over each line in file
+    
+        if line.count(' ') and startMeasurement:
+            # If the line contains a space and the measurement has started, add this line to the currentMeasurement matrix
+            currentMeasurement.append(line.split())
+            newLineCount = 0
+        
+        if line.count('corners_world ='):
+            # Check whether measurement has started, this is done after the if 
+            # that adds measurements so that 'corners_world' and '=' are not added
+            startMeasurement = True
+            newLineCount = 0   
+            
+        elif line.isspace():
+            # Keep track of how many lines with no text are after each other
+            newLineCount += 1
+        
+        if newLineCount >= 2 and startMeasurement:
+            # Measurements are separated by two newlines
+            allMeasurements.append(currentMeasurement)
+            currentMeasurement = []
+            startMeasurement = False
+            newLineCount = 0
+            
+    return allMeasurements
+
+""" 
+MAIN SCRIPT: USING FUNCTIONS TO EXTRACT DATA
+"""
 
 # Defining variables
-startMeasurement = False # When true, next lines can be considered to be part of the same measurement
-newLineCount = 0 # Counts the number of new lines (measurements are separated by 2 new lines)
-cornerMatrix = [] # Contains all of the extracted corner measurements
-currentMeasurement = [] # Contains the measurement currently being extracted
+filePath = '/home/robin/Bureaublad/getFeatureCalibratieData.txt'
 refMeasurements = [[1.5405, 0.6808], [1.3355, -0.3614], [0.8496, -0.7070]] # reference data which is considered correct (from camera)
 goodMeasurements = [] # Measurements which are not due to random noise
 
-# Looping over each line in file
-for line in lines:
-    
-    if line.count(' ') and startMeasurement:
-        # If the line contains a space and the measurement has started, add this line to the currentMeasurement matrix
-        currentMeasurement.append(line.split())
-        newLineCount = 0
-    
-    if line.count('corners_world ='):
-        # Check whether measurement has started, this is done after the if 
-        # that adds measurements so that 'corners_world' and '=' are not added
-        startMeasurement = True
-        newLineCount = 0   
-        
-    elif line.isspace():
-        # Keep track of how many lines with no text are after each other
-        newLineCount += 1
-    
-    if newLineCount >= 2 and startMeasurement:
-        # Measurements are separated by two newlines
-        cornerMatrix.append(currentMeasurement)
-        goodMeasurements.append(checkReference(refMeasurements, currentMeasurement, 0.5))
-        currentMeasurement = []
-        startMeasurement = False
-        newLineCount = 0
+cornerMatrix = getMeasurements(filePath)
+
 
 
         
