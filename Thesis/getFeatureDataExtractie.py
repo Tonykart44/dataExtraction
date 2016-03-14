@@ -7,7 +7,10 @@ Created on Wed Mar  9 12:00:30 2016
 File that extraxts data from txt file that contains getFeature data from txt files
 """
 import math
+import matplotlib.pyplot as plt
+import numpy as np
 from scipy.stats import norm
+
 """
 DEFINING FUNCTIONS
 """
@@ -200,3 +203,16 @@ allDifferences.extend(y_C)
 
 # Getting normal distribution parameters
 mu, std = norm.fit(allDifferences) 
+
+# Plot the histogram.
+plt.hist(allDifferences, bins=25, normed=True, alpha=0.6, color='g')
+
+# Plot the PDF.
+xmin, xmax = plt.xlim()
+x = np.linspace(xmin, xmax, 100)
+p = norm.pdf(x, mu, std)
+plt.plot(x, p, 'k', linewidth=2)
+title = "Fit results: mu = %.2f,  std = %.2f" % (mu, std)
+plt.title(title)
+
+plt.show()
