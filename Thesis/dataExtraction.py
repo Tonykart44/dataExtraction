@@ -123,6 +123,24 @@ def getMeasurements(filePath, prefix):
         
  return allMeasurements
  
+#==============================================================================
+def getLevelOfSublists(masterList):
+    """
+        Function that returns the number of sublevels in a list that contains
+        other lists.
+        
+        INPUT: 
+              masterList: list in wich sublevels can be present and from which 
+                          the levels will be returned
+        OUTPUT:
+              number of levels in masterList
+              
+        source: http://stackoverflow.com/questions/6039103/counting-deepness-or-the-deepest-level-a-nested-list-goes-to
+    """
+    if isinstance(masterList, list) and len(masterList) > 0:
+        return 1 + max(getLevelOfSublists(item) for item in masterList)
+    else:
+        return 0
 #==============================================================================   
 def removeSublistLevel(masterList, index):
     """

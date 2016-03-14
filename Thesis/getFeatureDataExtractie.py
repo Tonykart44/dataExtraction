@@ -119,7 +119,7 @@ def getSublistElements(masterList, index):
         masterlist: list that has one level of sublists from which elements
                     have to be selected
         index: index of elements in sublist that have to be returned
-        
+            
     OUTPUT:
         sublistElements: elements of sublists at index 
     """
