@@ -58,15 +58,7 @@ def checkReference(reference, data, accuracy):
                     matchedData.append(matchedPoint)
 
     return matchedData
-   
-def getDistribution(data):
-    """
-    Function that fits a normal distribution to data
-    ??? DATA X/Y or X and Y ???
-    """
-    mu, std = norm.fit(data)  
-    return mu, std
-   
+  
 def getMeasurements(filePath):
     """
     Function that extracts measurements from a .txt file    
@@ -205,3 +197,6 @@ allDifferences.extend(x_B)
 allDifferences.extend(y_B)
 allDifferences.extend(x_C)
 allDifferences.extend(y_C)
+
+# Getting normal distribution parameters
+mu, std = norm.fit(allDifferences) 
