@@ -153,8 +153,6 @@ def splitMeasurements(filteredMeasurements):
     """
     # Initializing variables
     measurements_point_A = []
-    measurements_point_B = []
-    measurements_point_C = []    
     
     # Input handeling
     if not isinstance(filteredMeasurements, list):
@@ -166,11 +164,9 @@ def splitMeasurements(filteredMeasurements):
     else:
         for filteredMeasurement in filteredMeasurements:
             measurements_point_A.append(filteredMeasurement[0])
-            measurements_point_B.append(filteredMeasurement[1])
-            measurements_point_C.append(filteredMeasurement[2])
                 
     
-    return measurements_point_A, measurements_point_B, measurements_point_C
+    return measurements_point_A
 
 def getDistribution(filePath, refMeasurements):
     #List containing all corner measurements
@@ -214,6 +210,11 @@ MAIN SCRIPT: USING FUNCTIONS TO EXTRACT DATA
 filePath = '/home/robin/Bureaublad/getOdometrySampleData.txt'
 refMeasurements = [[1.5405, 0.6808], [1.3355, -0.3614], [0.8496, -0.7070]] # reference data which is considered correct (from camera)
 dth = getMeasurements(filePath,'dth =')
-ds = getMeasurements(filePath, 'ds =') 
+dth = splitMeasurements(dth)
+dth = splitMeasurements(dth)
+mu_dth, st_dth = norm.fit(dth)
 
+ds = getMeasurements(filePath, 'ds =') 
+ds = splitMeasurements(ds)
+ds = splitMeasurements(ds)
 
