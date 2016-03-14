@@ -13,208 +13,52 @@ Created on Wed Mar  9 12:00:30 2016
 
 File that extraxts data from txt file that contains getFeature data from txt files
 """
-import math
-import matplotlib.pyplot as plt
-import numpy as np
+import dataExtraction as dE
 from scipy.stats import norm
+
 
 """
 DEFINING FUNCTIONS
 """
-def checkReference(reference, data, accuracy):
-    """
-    Function to check whether a dataset matches the reference close enough
-    
-        INPUT:
-                reference: reference to match data against, this is a list
-                           containing an arbitrary amount of lists of size 2
-                data: data to be matched with the reference, 
-                      this is a list containing lists containing lists of len 2
-                accuracy: parameter that specifies how much data can differ 
-                          from reference and still be accepted as matching
-    
-        OUTPUT
-                matchedData: a list containing lists of size 2 of data that has
-                             been checked against the reference and accepted
-                             according to the specified accuracy. Number inside
-                             list represents difference of datapoint with 
-                             reference
-                             
-    """
-    # Variables
-    matchedData = []  
-    
-    for measurement in data:
-        matchedPoint = [] #datapoints (list of len 2) that have been matched
-        for point in measurement:
-            x_p = point[0] #measured x coordinates
-            y_p = point[1] #measured y coordinates
-            for ref in reference:
-                x_ref = ref[0] #reference x coordinates
-                y_ref = ref[1] #reference u coordinates
-                
-                diff_x = float(x_p) - float(x_ref) #difference in x coordinates
-                diff_y = float(y_p) - float(y_ref) #difference in y coordinates
-                pointDiff = [diff_x, diff_y] #difference as list
-                
-                distance = math.sqrt(math.pow(diff_x, 2) + math.pow(diff_y, 2)) 
-                               
-                if distance <= accuracy and point not in matchedPoint:
-                # Add current point to matched points if accepted and not already in matchedPoint
-                    matchedPoint.append(pointDiff)
-                    
-                if len(matchedPoint) == len(reference) and matchedPoint not in matchedData:
-                # Add points to data when all have been matched against a reference and they are not yet in matchedData
-                    matchedData.append(matchedPoint)
 
-    return matchedData
-  
-def getMeasurements(filePath, prefix):
-    """
-    Function that extracts measurements from a .txt file    
-
-    INPUT:
-            filePath: full path of the file to be read
-    
-    OUTPUT:
-            allMeasurements: list containing the all the measurements as smaller lists
-    
-    """    
-    # Defining local variables
-
-    fileHandle = open(filePath, 'r') #Internal name for file
-    lines = fileHandle.readlines() #All lines in the file
-    lines = lines[0:] #While debugging sometimes not the entire file is used
-    
-    startMeasurement = False # When true, next lines can be considered to be part of the same measurement
-    newLineCount = 0 # Counts the number of new lines (measurements are separated by 2 new lines)
-    allMeasurements = [] # Contains all of the extracted corner measurements
-    currentMeasurement = [] # Contains the measurement currently being extracted
-    
-    for line in lines:
-    # Looping over each line in file
-    
-        if line.count(' ') and startMeasurement:
-            # If the line contains a space and the measurement has started, add this line to the currentMeasurement matrix
-            currentMeasurement.append(line.split())
-            newLineCount = 0
-        
-        if line.count(prefix):
-            # Check whether measurement has started, this is done after the if 
-            # that adds measurements so that 'corners_world' and '=' are not added
-            startMeasurement = True
-            newLineCount = 0   
-            
-        elif line.isspace():
-            # Keep track of how many lines with no text are after each other
-            newLineCount += 1
-        
-        if newLineCount >= 2 and startMeasurement:
-            # Measurements are separated by two newlines
-            allMeasurements.append(currentMeasurement)
-            currentMeasurement = []
-            startMeasurement = False
-            newLineCount = 0
-            
-    return allMeasurements
-    
-def getSublistElements(masterList, index):
-    """
-    Function that returns all elements from sublists in a masterlist at index
-    
-    INPUT:
-        masterlist: list that has one level of sublists from which elements
-                    have to be selected
-        index: index of elements in sublist that have to be returned
-        
-    OUTPUT:
-        sublistElements: elements of sublists at index 
-    """
-    sublistElements = []    
-    
-    for sublist in masterList:
-        sublistElements.append(sublist[index])
-    ()
-    return sublistElements
-    
-def splitMeasurements(filteredMeasurements):
-    """
-    Function that splits filtered data from checkMeasurement into separate 
-    lists of measurements that are of the same point.
-    
-    INPUT:
-          filteredMeasurements: list of lists of len 3 of lists of len 2    
-                                (as returned by checkReference)
-    
-    OUTPUT:
-          measurements_point_A: measurements that correspond to one point "A"
-          measurements_point_B: measurements that correspond to one point "B"
-          measurements_point_C: measurements that correspond to one point "C"
-    """
-    # Initializing variables
-    measurements_point_A = []
-    
-    # Input handeling
-    if not isinstance(filteredMeasurements, list):
-        print("filteredMeasurements is not a list")
-    elif not isinstance(filteredMeasurements, list):
-        print("The first element of filteredMeasurements is not a list")
-    elif len(filteredMeasurements[0]) > 3:
-        print("Length of filteredMeasurements is greater than 3, only first three measurements will be selected")
-    else:
-        for filteredMeasurement in filteredMeasurements:
-            measurements_point_A.append(filteredMeasurement[0])
-                
-    
-    return measurements_point_A
-
-def getDistribution(filePath, refMeasurements):
+def getDistribution(filePath, refMeasurements_ds, refMeasurements_dth):
     #List containing all corner measurements
-    corners = getMeasurements(filePath) 
+    measurements_ds = dE.getMeasurements(filePath,'ds =')
+    measurements_dth = dE.getMeasurements(filePath,'d =')
     
     # Measurements which are not due to random noise
-    filteredCorners = checkReference(refMeasurements, corners, 0.2) 
+    filteredMeasurements_ds = dE.checkReference(refMeasurements_ds, measurements_ds, 0.2) 
+    filteredMeasurements_dth = dE.checkReference(refMeasurements_dth, measurements_dth, 0.2)  
+#    #Split filtered corners in list of points that belong together
+#    measurements_point_A = dE.removeSublistLevel(filteredMeasurements_ds,0)
+#    measurements_point_B = dE.removeSublistLevel(filteredMeasurements_dth,1)
+#    # Extracting difference in x and y coordinates from split corners
+#    x_A = getSublistElements(measurements_point_A, 0)
+#    y_A = getSublistElements(measurements_point_A, 1)
+#    
+#    # Putting all the differences in one list
+#    allDifferences = []
+#    allDifferences.extend(x_A)
+#    allDifferences.extend(y_A)
+#    allDifferences.extend(x_B)
+#    allDifferences.extend(y_B)
+#    allDifferences.extend(x_C)
+#    allDifferences.extend(y_C)
+#    
+#    # Getting normal distribution parameters
+#    mu, std = norm.fit(allDifferences)
     
-    #Split filtered corners in list of points that belong together
-    measurements_point_A, measurements_point_B, measurements_point_C = splitMeasurements(filteredCorners) 
-    
-    # Extracting difference in x and y coordinates from split corners
-    x_A = getSublistElements(measurements_point_A, 0)
-    y_A = getSublistElements(measurements_point_A, 1)
-    
-    x_B = getSublistElements(measurements_point_B, 0)
-    y_B = getSublistElements(measurements_point_B, 1)
-    
-    x_C = getSublistElements(measurements_point_C, 0)
-    y_C = getSublistElements(measurements_point_C, 1)
-    
-    # Putting all the differences in one list
-    allDifferences = []
-    allDifferences.extend(x_A)
-    allDifferences.extend(y_A)
-    allDifferences.extend(x_B)
-    allDifferences.extend(y_B)
-    allDifferences.extend(x_C)
-    allDifferences.extend(y_C)
-    
-    # Getting normal distribution parameters
-    mu, std = norm.fit(allDifferences)
-    
-    return mu, std, allDifferences
-
+#    return mu, std, allDifferences
+    return filteredMeasurements_ds, filteredMeasurements_dth
 """ 
 MAIN SCRIPT: USING FUNCTIONS TO EXTRACT DATA
 """
 
 # Defining file variables
 filePath = '/home/robin/Bureaublad/getOdometrySampleData.txt'
-refMeasurements = [[1.5405, 0.6808], [1.3355, -0.3614], [0.8496, -0.7070]] # reference data which is considered correct (from camera)
-dth = getMeasurements(filePath,'dth =')
-dth = splitMeasurements(dth)
-dth = splitMeasurements(dth)
-mu_dth, st_dth = norm.fit(dth)
+refMeasurements_ds = [[0.8], [0.05], [0.3]] # reference data which is considered correct (from camera)
+refMeasurements_dth = [[0.2], [0.5]]
+filteredMeasurements_ds, filteredMeasurements_dth = getDistribution(filePath, refMeasurements_ds, refMeasurements_dth)
 
-ds = getMeasurements(filePath, 'ds =') 
-ds = splitMeasurements(ds)
-ds = splitMeasurements(ds)
+
 
