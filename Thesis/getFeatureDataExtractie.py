@@ -203,16 +203,25 @@ def getDistribution(filePath, refMeasurements):
 MAIN SCRIPT: USING FUNCTIONS TO EXTRACT DATA
 """
 
-# Defining variables
+# Defining file variables
 filePath = '/home/robin/Bureaublad/getFeatureCalibratieData.txt'
 refMeasurements = [[1.5405, 0.6808], [1.3355, -0.3614], [0.8496, -0.7070]] # reference data which is considered correct (from camera)
 
-# 
-mu, std, allDifferences = getDistribution(filePath, refMeasurements)
-# Plot the histogram.
-plt.hist(allDifferences, bins=25, normed=True, alpha=0.6, color='g')
+filePath2 = '/home/robin/Bureaublad/getFeatureCalibratieData2.txt'
+refMeasurements2= [[1.5465, 0.6896], [1.3351, -0.3636], [0.8216, -0.7193]]
 
-# Plot the PDF.
+# Getting distributions
+mu, std, allDifferences = getDistribution(filePath, refMeasurements)
+mu2, std2, allDifferences2 = getDistribution(filePath2, refMeasurements2)
+
+# Plotting the histograms
+plt.figure(1)
+plt.hist(allDifferences, bins=25, normed=True, alpha=0.6, color='g')
+plt.figure(2)
+plt.hist(allDifferences2, bins=25, normed=True, alpha=0.6, color='r')
+
+# Plot the PDFs
+plt.figure(1)
 xmin, xmax = plt.xlim()
 x = np.linspace(xmin, xmax, 100)
 p = norm.pdf(x, mu, std)
@@ -220,4 +229,13 @@ plt.plot(x, p, 'k', linewidth=2)
 title = "Fit results: mu = %.2f,  std = %.2f" % (mu, std)
 plt.title(title)
 plt.savefig('getFeatureDistribution.png')
+
+plt.figure(2)
+xmin2,xmax2= plt.xlim()
+x2= np.linspace(xmin2,xmax2,100)
+p2= norm.pdf(x2,mu2,std2)
+plt.plot(x2,p2,'k', linewidth=2)
+title2= "Fit results: mu = %.2f,  std = %.2f" % (mu2,std2)
+plt.title(title2)
+plt.savefig('getFeatureDistribution2.png')
 plt.show()
