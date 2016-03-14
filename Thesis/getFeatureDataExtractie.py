@@ -187,7 +187,7 @@ filteredCorners = checkReference(refMeasurements, corners, 0.2)
 #Split filtered corners in list of points that belong together
 measurements_point_A, measurements_point_B, measurements_point_C = splitMeasurements(filteredCorners) 
 
-# Extracting x and y coordinates from split corners
+# Extracting difference in x and y coordinates from split corners
 x_A = getSublistElements(measurements_point_A, 0)
 y_A = getSublistElements(measurements_point_A, 1)
 
@@ -197,4 +197,11 @@ y_B = getSublistElements(measurements_point_B, 1)
 x_C = getSublistElements(measurements_point_C, 0)
 y_C = getSublistElements(measurements_point_C, 1)
 
-        
+# Putting all the differences in one list
+allDifferences = []
+allDifferences.extend(x_A)
+allDifferences.extend(y_A)
+allDifferences.extend(x_B)
+allDifferences.extend(y_B)
+allDifferences.extend(x_C)
+allDifferences.extend(y_C)
