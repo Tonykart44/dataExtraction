@@ -26,7 +26,9 @@ def checkReference(reference, data, accuracy):
         OUTPUT
                 matchedData: a list containing lists of size 2 of data that has
                              been checked against the reference and accepted
-                             according to the specified accuracy
+                             according to the specified accuracy. Number inside
+                             list represents difference of datapoint with 
+                             reference
                              
     """
     # Variables
@@ -43,12 +45,13 @@ def checkReference(reference, data, accuracy):
                 
                 diff_x = float(x_p) - float(x_ref) #difference in x coordinates
                 diff_y = float(y_p) - float(y_ref) #difference in y coordinates
+                pointDiff = [diff_x, diff_y] #difference as list
                 
                 distance = math.sqrt(math.pow(diff_x, 2) + math.pow(diff_y, 2)) 
                                
                 if distance <= accuracy and point not in matchedPoint:
                 # Add current point to matched points if accepted and not already in matchedPoint
-                    matchedPoint.append(point)
+                    matchedPoint.append(pointDiff)
                     
                 if len(matchedPoint) == len(reference) and matchedPoint not in matchedData:
                 # Add points to data when all have been matched against a reference and they are not yet in matchedData
