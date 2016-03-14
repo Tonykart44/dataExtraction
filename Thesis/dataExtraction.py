@@ -88,8 +88,29 @@ def removeSublistLevel(masterList, index):
         sublistElements: elements of sublists at index 
     """
     
-    sublistElements = []    
+    # Error messages
+    typeError = '''
+    ERROR: Input is of wrong type, please use a list with sublevels for 
+    masterList, and int for index.
+    '''  
+    lengthError = '''
+    ERROR: One or more of the sublists of masterList have a length that is 
+    smaller than the desired index.
+    '''
     
-    for sublist in masterList:
-        sublistElements.append(sublist[index])
+    # Initializing output
+    sublistElements = []  
+    
+    # Input checking
+    if not isinstance(masterList, list) or not isinstance(index, int):
+        print(typeError)      
+    elif not isinstance(masterList[0], list):
+        print(typeError) 
+    elif len(masterList[0]) <= index:
+        print(lengthError)
+    else:
+        # Getting sublists
+        for sublist in masterList:
+            sublistElements.append(sublist[index])
+        
     return sublistElements
