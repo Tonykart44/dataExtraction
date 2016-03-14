@@ -7,7 +7,55 @@ Created on Mon Mar 14 17:04:37 2016
 Costum functions that can be used when extracting data from a .txt file that 
 was created using the diary function in MATLAB
 """
-
+import math
+#==============================================================================
+def checkReference(reference, data, accuracy):
+    """
+    Function to check whether a dataset matches the reference close enough
+    
+        INPUT:
+                reference: reference to match data against, this is a list
+                           containing an arbitrary amount of lists of size 2
+                data: data to be matched with the reference, 
+                      this is a list containing lists containing lists of len 2
+                accuracy: parameter that specifies how much data can differ 
+                          from reference and still be accepted as matching
+    
+        OUTPUT
+                matchedData: a list containing lists of size 2 of data that has
+                             been checked against the reference and accepted
+                             according to the specified accuracy. Number inside
+                             list represents difference of datapoint with 
+                             reference
+                             
+    """
+    matchedData = [] #initalizing output
+    
+    for measurement in data:
+        matchedPoint = [] #datapoints (list of len 2) that have been matched
+        for point in measurement:
+            x_p = point[0] #measured x coordinates
+            y_p = point[1] #measured y coordinates
+            for ref in reference:
+                x_ref = ref[0] #reference x coordinates
+                y_ref = ref[1] #reference u coordinates
+                
+                diff_x = float(x_p) - float(x_ref) #difference in x coordinates
+                diff_y = float(y_p) - float(y_ref) #difference in y coordinates
+                pointDiff = [diff_x, diff_y] #difference as list
+                
+                distance = math.sqrt(math.pow(diff_x, 2) + math.pow(diff_y, 2)) 
+                               
+                if distance <= accuracy and point not in matchedPoint:
+                # Add current point to matched points if accepted and not already in matchedPoint
+                    matchedPoint.append(pointDiff)
+                    
+                if len(matchedPoint) == len(reference) and matchedPoint not in matchedData:
+                # Add points to data when all have been matched against a reference and they are not yet in matchedData
+                    matchedData.append(matchedPoint)
+    
+    return matchedData
+#==============================================================================
 def getMeasurements(filePath, prefix):
  """
  Function that extracts measurements from a .txt file    
@@ -74,7 +122,8 @@ def getMeasurements(filePath, prefix):
          newLineCount = 0
         
  return allMeasurements
-    
+ 
+#==============================================================================   
 def removeSublistLevel(masterList, index):
     """
     Function that returns all elements from sublists in a masterlist at index
