@@ -214,5 +214,5 @@ p = norm.pdf(x, mu, std)
 plt.plot(x, p, 'k', linewidth=2)
 title = "Fit results: mu = %.2f,  std = %.2f" % (mu, std)
 plt.title(title)
-
+plt.savefig('getFeatureDistribution.png')
 plt.show()
