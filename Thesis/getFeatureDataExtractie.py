@@ -7,6 +7,7 @@ Created on Wed Mar  9 12:00:30 2016
 File that extraxts data from txt file that contains getFeature data from txt files
 """
 import math
+from scipy.stats import norm
 """
 DEFINING FUNCTIONS
 """
@@ -55,12 +56,13 @@ def checkReference(reference, data, accuracy):
 
     return matchedData
    
-def getDistribution():
+def getDistribution(data):
     """
     Function that fits a normal distribution to data
     ??? DATA X/Y or X and Y ???
     """
-    pass   
+    mu, std = norm.fit(data)  
+    return mu, std
    
 def getMeasurements(filePath):
     """
