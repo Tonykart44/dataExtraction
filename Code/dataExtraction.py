@@ -9,16 +9,19 @@ was created using the diary function in MATLAB
 """
 
 from Tkinter import Tk
-from tkFileDialog import askopenfilename
-import matplotlib.pyplot as plt
-import numpy as np
-from scipy.stats import norm
+from tkFileDialog import askopenfilename, askdirectory
 
 #==============================================================================
 def getFilePath():
     # Selecting file trough GUI
     Tk().withdraw() # we don't want a full GUI, so keep the root window from appearing
     filePath = askopenfilename() # show an "Open" dialog box and return the path to the selected file
+    return filePath
+#==============================================================================
+def getSavePath():
+    # Selecting file trough GUI
+    Tk().withdraw() # we don't want a full GUI, so keep the root window from appearing
+    filePath = askdirectory() # show an "Open" dialog box and return the path
     return filePath
 #=============================================================================
 def getMeasurements(filePath, prefix):
