@@ -11,8 +11,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 from scipy.stats import norm
 import math
-from Tkinter import Tk
-from tkFileDialog import askopenfilename
 
 
 """
@@ -123,8 +121,7 @@ MAIN SCRIPT: USING FUNCTIONS TO EXTRACT DATA
 """
 
 # Selecting file trough GUI
-Tk().withdraw() # we don't want a full GUI, so keep the root window from appearing
-filePath = askopenfilename() # show an "Open" dialog box and return the path to the selected file
+filePath = dE.getFilePath()
 
 refMeasurements = [[1.5405, 0.6808], [1.3355, -0.3614], [0.8496, -0.7070]] # reference data which is considered correct (from camera)
 

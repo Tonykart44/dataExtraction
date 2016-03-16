@@ -103,8 +103,8 @@ MAIN SCRIPT: USING FUNCTIONS TO EXTRACT DATA
 
 # Getting distributions
 
-# Defining file path
-filePath = '/home/robin/Bureaublad/getOdometrySampleData.txt' 
+# Selecting file trough GUI
+filePath = dE.getFilePath()
 
 # Getting measurements
 measurements_ds = dE.getMeasurements(filePath,'ds =') #getting measurements of distance

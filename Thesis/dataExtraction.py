@@ -7,7 +7,20 @@ Created on Mon Mar 14 17:04:37 2016
 Costum functions that can be used when extracting data from a .txt file that 
 was created using the diary function in MATLAB
 """
+
+from Tkinter import Tk
+from tkFileDialog import askopenfilename
+import matplotlib.pyplot as plt
+import numpy as np
+from scipy.stats import norm
+
 #==============================================================================
+def getFilePath():
+    # Selecting file trough GUI
+    Tk().withdraw() # we don't want a full GUI, so keep the root window from appearing
+    filePath = askopenfilename() # show an "Open" dialog box and return the path to the selected file
+    return filePath
+#=============================================================================
 def getMeasurements(filePath, prefix):
  """
  Function that extracts measurements from a .txt file    
@@ -151,3 +164,4 @@ def removeSublistLevel(masterList, index):
             sublistElements.append(sublist[index])
         
     return sublistElements
+#==============================================================================
