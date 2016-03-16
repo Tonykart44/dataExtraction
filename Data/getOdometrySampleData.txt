@@ -1,0 +1,959 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%% NIEUWE OUTPUT %%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Establishing connection to Roomba...
+Setting Roomba to Control Mode...
+I am alive if you just heard me beep
+Wrong data format received. Trying again
+
+ds =
+
+     0
+
+
+dth =
+
+     0
+
+
+nearestMap =
+
+    0.4891   -0.5959
+
+
+nearest_corners_carthesian =
+
+    0.4546   -0.6088
+
+Elapsed time is 0.381223 seconds.
+
+ds =
+
+    0.0255
+
+
+dth =
+
+   -0.0040
+
+
+nearestMap =
+
+    0.4891   -0.5959
+
+
+nearest_corners_carthesian =
+
+    0.4643   -0.6300
+
+Elapsed time is 0.309111 seconds.
+
+ds =
+
+    0.0209
+
+
+dth =
+
+   -0.0080
+
+
+nearestMap =
+
+    0.4891   -0.5959
+
+
+nearest_corners_carthesian =
+
+    0.4508   -0.5723
+
+Elapsed time is 0.605721 seconds.
+
+ds =
+
+    0.0418
+
+
+dth =
+
+   -0.0199
+
+
+nearestMap =
+
+     []
+
+
+nearest_corners_carthesian =
+
+     []
+
+Elapsed time is 0.305504 seconds.
+
+ds =
+
+    0.0197
+
+
+dth =
+
+   -0.0020
+
+
+nearestMap =
+
+    0.4891   -0.5959
+
+
+nearest_corners_carthesian =
+
+    0.4488   -0.5867
+
+Elapsed time is 0.465084 seconds.
+
+ds =
+
+    0.0369
+
+
+dth =
+
+   -0.0020
+
+
+nearestMap =
+
+     []
+
+
+nearest_corners_carthesian =
+
+     []
+
+Elapsed time is 0.582338 seconds.
+
+ds =
+
+    0.0378
+
+
+dth =
+
+   -0.0100
+
+
+nearestMap =
+
+     []
+
+
+nearest_corners_carthesian =
+
+     []
+
+Elapsed time is 0.422274 seconds.
+
+ds =
+
+    0.0290
+
+
+dth =
+
+   -0.0100
+
+
+nearestMap =
+
+     []
+
+
+nearest_corners_carthesian =
+
+     []
+
+Elapsed time is 0.394964 seconds.
+
+ds =
+
+    0.0262
+
+
+dth =
+
+   -0.0020
+
+
+nearestMap =
+
+     []
+
+
+nearest_corners_carthesian =
+
+     []
+
+Elapsed time is 0.335569 seconds.
+
+ds =
+
+    0.0230
+
+
+dth =
+
+   -0.0020
+
+
+nearestMap =
+
+     []
+
+
+nearest_corners_carthesian =
+
+     []
+
+Elapsed time is 0.295807 seconds.
+
+ds =
+
+    0.0200
+
+
+dth =
+
+   -0.0040
+
+
+nearestMap =
+
+     []
+
+
+nearest_corners_carthesian =
+
+     []
+
+Elapsed time is 0.325693 seconds.
+
+ds =
+
+    0.0220
+
+
+dth =
+
+   -0.0060
+
+
+nearestMap =
+
+     []
+
+
+nearest_corners_carthesian =
+
+     []
+
+Elapsed time is 0.309983 seconds.
+
+ds =
+
+    0.0227
+
+
+dth =
+
+   -0.0080
+
+
+nearestMap =
+
+     []
+
+
+nearest_corners_carthesian =
+
+     []
+
+Elapsed time is 0.336458 seconds.
+
+ds =
+
+    0.0227
+
+
+dth =
+
+   -0.0040
+
+
+nearestMap =
+
+     []
+
+
+nearest_corners_carthesian =
+
+     []
+
+Elapsed time is 0.306903 seconds.
+
+ds =
+
+    0.0202
+
+
+dth =
+
+    0.0020
+
+
+nearestMap =
+
+     []
+
+
+nearest_corners_carthesian =
+
+     []
+
+Elapsed time is 0.424105 seconds.
+
+ds =
+
+    0.0302
+
+
+dth =
+
+   -0.0040
+
+
+nearestMap =
+
+     []
+
+
+nearest_corners_carthesian =
+
+     []
+
+Elapsed time is 3.318410 seconds.
+
+ds =
+
+    0.2318
+
+
+dth =
+
+   -0.0617
+
+
+nearestMap =
+
+     []
+
+
+nearest_corners_carthesian =
+
+     []
+
+Elapsed time is 0.336892 seconds.
+
+ds =
+
+    0.0197
+
+
+dth =
+
+    0.0100
+
+
+nearestMap =
+
+     []
+
+
+nearest_corners_carthesian =
+
+     []
+
+
+th =
+
+    0.0100
+
+Elapsed time is 0.331625 seconds.
+
+ds =
+
+    0.0023
+
+
+dth =
+
+    0.2151
+
+
+nearestMap =
+
+     []
+
+
+nearest_corners_carthesian =
+
+     []
+
+
+th =
+
+    0.2250
+
+Elapsed time is 0.295057 seconds.
+
+ds =
+
+    0.0014
+
+
+dth =
+
+    0.1434
+
+
+nearestMap =
+
+     []
+
+
+nearest_corners_carthesian =
+
+     []
+
+
+th =
+
+    0.3684
+
+Elapsed time is 0.561843 seconds.
+
+ds =
+
+    0.0035
+
+
+dth =
+
+    0.3007
+
+
+nearestMap =
+
+     []
+
+
+nearest_corners_carthesian =
+
+     []
+
+
+th =
+
+    0.6691
+
+Elapsed time is 0.377491 seconds.
+
+ds =
+
+    0.0016
+
+
+dth =
+
+    0.1972
+
+
+nearestMap =
+
+     []
+
+
+nearest_corners_carthesian =
+
+     []
+
+
+th =
+
+    0.8663
+
+Elapsed time is 0.328470 seconds.
+
+ds =
+
+   9.2800e-04
+
+
+dth =
+
+    0.1752
+
+
+nearestMap =
+
+     []
+
+
+nearest_corners_carthesian =
+
+     []
+
+
+th =
+
+    1.0415
+
+Elapsed time is 0.304728 seconds.
+
+ds =
+
+    0.0014
+
+
+dth =
+
+    0.1912
+
+
+nearestMap =
+
+     []
+
+
+nearest_corners_carthesian =
+
+     []
+
+
+th =
+
+    1.2327
+
+Elapsed time is 0.318296 seconds.
+
+ds =
+
+   2.3200e-04
+
+
+dth =
+
+    0.1653
+
+
+nearestMap =
+
+     []
+
+
+nearest_corners_carthesian =
+
+     []
+
+
+th =
+
+    1.3980
+
+Elapsed time is 0.309704 seconds.
+
+ds =
+
+    0.0012
+
+
+dth =
+
+    0.1892
+
+
+nearestMap =
+
+     []
+
+
+nearest_corners_carthesian =
+
+     []
+
+
+th =
+
+    1.5872
+
+Elapsed time is 0.428298 seconds.
+
+ds =
+
+    0.0012
+
+
+dth =
+
+    0.3087
+
+
+nearestMap =
+
+     []
+
+
+nearest_corners_carthesian =
+
+     []
+
+
+th =
+
+    1.8958
+
+Elapsed time is 0.345501 seconds.
+
+ds =
+
+    0.0014
+
+
+dth =
+
+    0.1434
+
+
+nearestMap =
+
+     []
+
+
+nearest_corners_carthesian =
+
+     []
+
+
+th =
+
+    2.0392
+
+Elapsed time is 0.394601 seconds.
+
+ds =
+
+   4.6400e-04
+
+
+dth =
+
+    0.2469
+
+
+nearestMap =
+
+     []
+
+
+nearest_corners_carthesian =
+
+     []
+
+
+th =
+
+    2.2861
+
+Elapsed time is 0.483924 seconds.
+
+ds =
+
+   4.6400e-04
+
+
+dth =
+
+    0.2668
+
+
+nearestMap =
+
+     []
+
+
+nearest_corners_carthesian =
+
+     []
+
+
+th =
+
+    2.5530
+
+Elapsed time is 1.571276 seconds.
+
+ds =
+
+    0.0016
+
+
+dth =
+
+    0.8941
+
+
+nearestMap =
+
+     []
+
+
+nearest_corners_carthesian =
+
+     []
+
+
+th =
+
+    3.4471
+
+Elapsed time is 0.889799 seconds.
+
+ds =
+
+    0.0067
+
+
+dth =
+
+    0.4799
+
+
+nearestMap =
+
+     []
+
+
+nearest_corners_carthesian =
+
+     []
+
+Elapsed time is 0.521377 seconds.
+
+ds =
+
+    0.0374
+
+
+dth =
+
+    0.0020
+
+
+nearestMap =
+
+     []
+
+
+nearest_corners_carthesian =
+
+     []
+
+Elapsed time is 0.384147 seconds.
+
+ds =
+
+    0.0258
+
+
+dth =
+
+    0.0060
+
+
+nearestMap =
+
+     []
+
+
+nearest_corners_carthesian =
+
+     []
+
+Elapsed time is 0.338439 seconds.
+
+ds =
+
+    0.0255
+
+
+dth =
+
+     0
+
+
+nearestMap =
+
+     []
+
+
+nearest_corners_carthesian =
+
+     []
+
+Elapsed time is 0.334275 seconds.
+
+ds =
+
+    0.0227
+
+
+dth =
+
+     0
+
+
+nearestMap =
+
+     []
+
+
+nearest_corners_carthesian =
+
+     []
+
+Elapsed time is 0.289142 seconds.
+
+ds =
+
+    0.0225
+
+
+dth =
+
+   -0.0060
+
+
+nearestMap =
+
+     []
+
+
+nearest_corners_carthesian =
+
+     []
+
+Elapsed time is 0.508434 seconds.
+
+ds =
+
+    0.0341
+
+
+dth =
+
+   -0.0060
+
+
+nearestMap =
+
+     []
+
+
+nearest_corners_carthesian =
+
+     []
+
+Elapsed time is 1.737308 seconds.
+
+ds =
+
+    0.1255
+
+
+dth =
+
+   -0.0378
+
+
+nearestMap =
+
+     []
+
+
+nearest_corners_carthesian =
+
+     []
+
+Elapsed time is 0.273824 seconds.
+
+ds =
+
+    0.0174
+
+
+dth =
+
+   -0.0020
+
+
+nearestMap =
+
+     []
+
+
+nearest_corners_carthesian =
+
+     []
+
+Elapsed time is 0.259957 seconds.
+
+ds =
+
+    0.0220
+
+
+dth =
+
+   -0.0060
+
+
+nearestMap =
+
+     []
+
+
+nearest_corners_carthesian =
+
+     []
+
+Elapsed time is 6.988610 seconds.
+
+ds =
+
+    0.4925
+
+
+dth =
+
+   -0.1414
+
+
+nearestMap =
+
+     []
+
+
+nearest_corners_carthesian =
+
+     []
+
+Elapsed time is 0.291027 seconds.
