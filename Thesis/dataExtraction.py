@@ -74,7 +74,25 @@ def getMeasurements(filePath, prefix):
          newLineCount = 0
         
  return allMeasurements
- 
+#============================================================================== 
+def getSampleMeasurements(masterListLength, subListLength, sample):
+    """
+        Function that returns a list (masterList) that contains lists (subList)
+        of specified length that contain only the specified number.
+    """
+    
+    sampleMeasurements  = []
+
+    sample = [sample]    
+    
+    for mlIndex in range(masterListLength):
+        sampleMeasurement = []
+        for slIndex in range(subListLength):
+            sampleMeasurement.append(sample)
+        sampleMeasurements.append(sampleMeasurement)
+    
+    return sampleMeasurements
+    
 #==============================================================================
 def getLevelOfSublists(masterList):
     """
