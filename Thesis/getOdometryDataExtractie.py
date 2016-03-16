@@ -45,10 +45,9 @@ def checkReference(reference, data, accuracy):
     lengthError = '''ERROR: length of input is incorrect, please use only 
     lists with sublists that have a length of 1 or 2.'''
     
-    index = 0
+    index = 0 #index to compare data with in reference
     
     for measurement in data:
-#        matchedPoint = [] #datapoints (list of len 2) that have been matched
         
         for point in measurement: #Checking and selecting measurements
         
@@ -61,27 +60,21 @@ def checkReference(reference, data, accuracy):
                 if type(data_point) == str:
                     data_point = float(data_point)
                     
-                ref = reference[index][0][0]
+                ref = reference[index][0]
 
                 if not len(ref) == 1:
-                    print lengthError
-                    
-                if type(ref) == str:
-                    ref = float(ref)   
+                    print lengthError   
                     
                 else:
+                    
                     ref_point = ref[0]
+                                        
+                    if type(ref_point) == str:
+                        ref_point = float(ref_point)
                     distance = abs(data_point-ref_point)
                 
                     matchedData.append(distance)                    
                     
-#                    if distance <= accuracy and point not in matchedPoint:
-#                        # Add current point to matched points if accepted and not already in matchedPoint
-#                        matchedPoint.append(distance)
-#
-#                    if len(matchedPoint) == len(reference) and matchedPoint not in matchedData:
-#                        # Add points to data when all have been matched against a reference and they are not yet in matchedData
-#                        matchedData.append(matchedPoint)
             index += 1
     return matchedData
 
