@@ -134,7 +134,15 @@ p = norm.pdf(x, mu_ds, std_ds)
 plt.plot(x, p, 'k', linewidth=2)
 title = "Fit results: mu = %.2f,  std = %.2f" % (mu_ds, std_ds)
 plt.title(title)
-plt.savefig('getOdometryDistrubution_ds.png')
+
+save_string = raw_input("Do you want to save the figure ? (y/n): ")
+if save_string == 'y':
+    savePath = dE.getSavePath()
+    plt.savefig(savePath + '/getOdometryDistrubution_ds.png')
+elif save_string == 'n':
+    print('Figure not saved')
+else:
+    print('Input invalid, figure not saved')
 
 # Plotting the histogram of dth
 plt.figure(2)
@@ -147,7 +155,16 @@ p = norm.pdf(x, mu_dth, std_dth)
 plt.plot(x, p, 'k', linewidth=2)
 title = "Fit results: mu = %.2f,  std = %.2f" % (mu_dth, std_dth)
 plt.title(title)
-plt.savefig('getOdometryDistrubution_dth.png')
+
+# Saving figure
+save_string = raw_input("Do you want to save the figure ? (y/n): ")
+if save_string == 'y':
+    savePath = dE.getSavePath()
+    plt.savefig(savePath + '/getOdometryDistrubution_dth.png')
+elif save_string == 'n':
+    print('Figure not saved')
+else:
+    print('Input invalid, figure not saved')
 
 
 

@@ -140,12 +140,12 @@ p = norm.pdf(x, mu, std)
 plt.plot(x, p, 'k', linewidth=2)
 title = "Fit results: mu = %.2f,  std = %.2f" % (mu, std)
 plt.title(title)
-plt.show()
 
+# Saving figure
 save_string = raw_input("Do you want to save the figure ? (y/n): ")
 if save_string == 'y':
     savePath = dE.getSavePath()
-    plt.savefig(savePath  + '/getFeatureDistribution.png')
+    plt.savefig(savePath + '/getFeatureDistribution2.png')
 elif save_string == 'n':
     print('Figure not saved')
 else:
