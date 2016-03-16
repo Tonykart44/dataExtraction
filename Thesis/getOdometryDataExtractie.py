@@ -14,7 +14,10 @@ Created on Wed Mar  9 12:00:30 2016
 File that extraxts data from txt file that contains getFeature data from txt files
 """
 import dataExtraction as dE
+import matplotlib.pyplot as plt
+import numpy as np
 from scipy.stats import norm
+import math
 
 """
 DEFINING FUNCTIONS
@@ -86,39 +89,66 @@ def getDistribution(filePath, refMeasurements_ds, refMeasurements_dth):
     # Measurements which are not due to random noise
     filteredMeasurements_ds = checkReference(refMeasurements_ds, measurements_ds, 0.2) 
     filteredMeasurements_dth = checkReference(refMeasurements_dth, measurements_dth, 0.2)  
-#    #Split filtered corners in list of points that belong together
-#    measurements_point_A = dE.removeSublistLevel(filteredMeasurements_ds,0)
-#    measurements_point_B = dE.removeSublistLevel(filteredMeasurements_dth,1)
-#    # Extracting difference in x and y coordinates from split corners
-#    x_A = getSublistElements(measurements_point_A, 0)
-#    y_A = getSublistElements(measurements_point_A, 1)
-#    
-#    # Putting all the differences in one list
-#    allDifferences = []
-#    allDifferences.extend(x_A)
-#    allDifferences.extend(y_A)
-#    allDifferences.extend(x_B)
-#    allDifferences.extend(y_B)
-#    allDifferences.extend(x_C)
-#    allDifferences.extend(y_C)
-#    
-#    # Getting normal distribution parameters
-#    mu, std = norm.fit(allDifferences)
+    
+    # Getting normal distribution parameters
+    mu_ds, std_ds = norm.fit(filteredMeasurements_ds)
+    mu_dth, std_dth = norm.fit(filteredMeasurements_dth)
     
 #    return mu, std, allDifferences
-    return filteredMeasurements_ds, filteredMeasurements_dth
+    return mu_ds, std_ds, mu_dth, std_dth
     
 """ 
 MAIN SCRIPT: USING FUNCTIONS TO EXTRACT DATA
 """
 
-# Defining file variables
-filePath = '/home/robin/Bureaublad/getOdometrySampleData.txt'
-measurements_ds = dE.getMeasurements(filePath,'ds =')
-measurements_dth = dE.getMeasurements(filePath,'dth =')
-refMeasurements_ds = dE.getSampleMeasurements(len(measurements_ds),1,0) # reference data which is considered correct (from camera)
+# Getting distributions
+
+# Defining file path
+filePath = '/home/robin/Bureaublad/getOdometrySampleData.txt' 
+
+# Getting measurements
+measurements_ds = dE.getMeasurements(filePath,'ds =') #getting measurements of distance
+measurements_dth = dE.getMeasurements(filePath,'dth =') #getting measurements of angle
+
+ # reference data which is considered correct (from camera)
+refMeasurements_ds = dE.getSampleMeasurements(len(measurements_ds),1,0)
 refMeasurements_dth = dE.getSampleMeasurements(len(measurements_dth),1,0)
-filteredMeasurements_ds, filteredMeasurements_dth = getDistribution(filePath, refMeasurements_ds, refMeasurements_dth)
+
+# Difference with real measurements 
+filteredMeasurements_ds = checkReference(refMeasurements_ds, measurements_ds, 0.2) 
+filteredMeasurements_dth = checkReference(refMeasurements_dth, measurements_dth, 0.2)
+
+ # Getting normal distribution parameters
+mu_ds, std_ds = norm.fit(filteredMeasurements_ds)
+mu_dth, std_dth = norm.fit(filteredMeasurements_dth) 
+
+# Plotting
+
+# Plotting the histogram of ds
+plt.figure(1)
+plt.hist(filteredMeasurements_ds, bins=25, normed=True, alpha=0.6, color='g')
+
+# Plot the PDF of ds
+xmin, xmax = plt.xlim()
+x = np.linspace(xmin, xmax, 100)
+p = norm.pdf(x, mu_ds, std_ds)
+plt.plot(x, p, 'k', linewidth=2)
+title = "Fit results: mu = %.2f,  std = %.2f" % (mu_ds, std_ds)
+plt.title(title)
+plt.savefig('getOdometryDistrubution_ds.png')
+
+# Plotting the histogram of dth
+plt.figure(2)
+plt.hist(filteredMeasurements_dth, bins=25, normed=True, alpha=0.6, color='g')
+
+# Plot the PDF of dth
+xmin, xmax = plt.xlim()
+x = np.linspace(xmin, xmax, 100)
+p = norm.pdf(x, mu_dth, std_dth)
+plt.plot(x, p, 'k', linewidth=2)
+title = "Fit results: mu = %.2f,  std = %.2f" % (mu_dth, std_dth)
+plt.title(title)
+plt.savefig('getOdometryDistrubution_dth.png')
 
 
 
