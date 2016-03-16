@@ -16,7 +16,6 @@ File that extraxts data from txt file that contains getFeature data from txt fil
 import dataExtraction as dE
 from scipy.stats import norm
 
-
 """
 DEFINING FUNCTIONS
 """
@@ -56,8 +55,8 @@ MAIN SCRIPT: USING FUNCTIONS TO EXTRACT DATA
 
 # Defining file variables
 filePath = '/home/robin/Bureaublad/getOdometrySampleData.txt'
-refMeasurements_ds = [[0.8], [0.05], [0.3]] # reference data which is considered correct (from camera)
-refMeasurements_dth = [[0.2], [0.5]]
+refMeasurements_ds = [[0], [0.0255], [0.0209]] # reference data which is considered correct (from camera)
+refMeasurements_dth = [[0], [-0.004], [-0.0080]]
 filteredMeasurements_ds, filteredMeasurements_dth = getDistribution(filePath, refMeasurements_ds, refMeasurements_dth)
 
 
