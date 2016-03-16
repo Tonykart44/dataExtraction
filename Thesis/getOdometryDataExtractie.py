@@ -58,15 +58,20 @@ def checkReference(reference, data, accuracy):
             else:
                 data_point = point[0]
                 
-                ref = reference[index]
+                if type(data_point) == str:
+                    data_point = float(data_point)
+                    
+                ref = reference[index][0][0]
 
                 if not len(ref) == 1:
                     print lengthError
                     
+                if type(ref) == str:
+                    ref = float(ref)   
+                    
                 else:
                     ref_point = ref[0]
-                    
-                    distance = abs(float(data_point)-float(ref_point))
+                    distance = abs(data_point-ref_point)
                 
                     matchedData.append(distance)                    
                     
@@ -116,10 +121,10 @@ MAIN SCRIPT: USING FUNCTIONS TO EXTRACT DATA
 
 # Defining file variables
 filePath = '/home/robin/Bureaublad/getOdometrySampleData.txt'
-refMeasurements_ds = [[0], [0.0255], [0.0209]] # reference data which is considered correct (from camera)
-refMeasurements_dth = [[0], [-0.004], [-0.0080]]
 measurements_ds = dE.getMeasurements(filePath,'ds =')
 measurements_dth = dE.getMeasurements(filePath,'dth =')
+refMeasurements_ds = dE.getSampleMeasurements(len(measurements_ds),1,0) # reference data which is considered correct (from camera)
+refMeasurements_dth = dE.getSampleMeasurements(len(measurements_dth),1,0)
 filteredMeasurements_ds, filteredMeasurements_dth = getDistribution(filePath, refMeasurements_ds, refMeasurements_dth)
 
 

@@ -83,7 +83,7 @@ def getSampleMeasurements(masterListLength, subListLength, sample):
     
     sampleMeasurements  = []
 
-    sample = [sample]    
+    sample = [str(sample)]    
     
     for mlIndex in range(masterListLength):
         sampleMeasurement = []
