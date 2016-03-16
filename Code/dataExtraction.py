@@ -21,7 +21,11 @@ def getFilePath():
 def getSavePath():
     # Selecting file trough GUI
     Tk().withdraw() # we don't want a full GUI, so keep the root window from appearing
+<<<<<<< HEAD
     filePath = askdirectory # show an "Open" dialog box and return the path
+=======
+    filePath = askdirectory() # show an "Open" dialog box and return the path
+>>>>>>> Development
     return filePath
 #=============================================================================
 def getMeasurements(filePath, prefix):
