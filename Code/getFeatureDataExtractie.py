@@ -144,7 +144,8 @@ plt.show()
 
 save_string = raw_input("Do you want to save the figure ? (y/n): ")
 if save_string == 'y':
-    plt.savefig('getFeatureDistribution.png')
+    savePath = dE.getSavePath()
+    plt.savefig(savePath  + '/getFeatureDistribution.png')
 elif save_string == 'n':
     print('Figure not saved')
 else:
