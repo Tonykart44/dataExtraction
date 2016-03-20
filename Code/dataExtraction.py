@@ -59,7 +59,7 @@ def getMeasurements(filePath, prefix):
  # Defining local variables
  fileHandle = open(filePath, 'r') #Internal name for file
  lines = fileHandle.readlines() #All lines in the file
- 
+
  startMeasurement = False # When true, next lines can be considered to be part of the same measurement
  newLineCount = 0 # Counts the number of new lines (measurements are separated by 2 new lines)
  allMeasurements = [] # Contains all of the extracted corner measurements
@@ -88,8 +88,14 @@ def getMeasurements(filePath, prefix):
          currentMeasurement = []
          startMeasurement = False
          newLineCount = 0
+         
+     print line
+     print newLineCount
+     print startMeasurement
+     
         
- return allMeasurements
+ return allMeasurements, lines
+ return lines
 #============================================================================== 
 def getSampleMeasurements(masterListLength, subListLength, sample):
     """
