@@ -124,6 +124,7 @@ MAIN SCRIPT: USING FUNCTIONS TO EXTRACT DATA
 # Selecting file trough GUI
 filePath = dE.getFilePath()
 
+print("Reference is wrong !!!")
 refMeasurements = [[1.5405, 0.6808], [1.3355, -0.3614], [0.8496, -0.7070]] # reference data which is considered correct (from camera)
 
 # Getting distributions
