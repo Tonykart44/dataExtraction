@@ -1,0 +1,302 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% NIEUWE OUTPUT (calibratie) %%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Establishing connection to Roomba...
+Setting Roomba to Control Mode...
+I am alive if you just heard me beep
+Drivestraight
+distance:0.5
+speed:0.05
+
+s =
+
+    0.5004
+
+
+th =
+
+    0.0697
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% NIEUWE OUTPUT (calibratie) %%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Establishing connection to Roomba...
+Setting Roomba to Control Mode...
+I am alive if you just heard me beep
+Drivestraight
+distance:0.5
+speed:0.05
+
+s =
+
+    0.5009
+
+
+th =
+
+    0.0816
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% NIEUWE OUTPUT (calibratie) %%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Establishing connection to Roomba...
+Setting Roomba to Control Mode...
+I am alive if you just heard me beep
+Drivestraight
+distance:0.5
+speed:0.05
+
+s =
+
+    0.5027
+
+
+th =
+
+    0.1255
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% NIEUWE OUTPUT (calibratie) %%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Establishing connection to Roomba...
+Setting Roomba to Control Mode...
+I am alive if you just heard me beep
+Drivestraight
+distance:0.5
+speed:0.05
+
+s =
+
+    0.5037
+
+
+th =
+
+    0.1454
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% NIEUWE OUTPUT (calibratie) %%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Establishing connection to Roomba...
+Setting Roomba to Control Mode...
+I am alive if you just heard me beep
+Drivestraight
+distance:0.5
+speed:0.05
+
+s =
+
+    0.5018
+
+
+th =
+
+    0.1135
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% NIEUWE OUTPUT (calibratie) %%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Establishing connection to Roomba...
+Setting Roomba to Control Mode...
+I am alive if you just heard me beep
+Drivestraight
+distance:0.5
+speed:0.05
+
+s =
+
+    0.5032
+
+
+th =
+
+    0.1215
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% NIEUWE OUTPUT (calibratie) %%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Establishing connection to Roomba...
+Setting Roomba to Control Mode...
+I am alive if you just heard me beep
+Drivestraight
+distance:0.5
+speed:0.05
+
+s =
+
+    0.5023
+
+
+th =
+
+    0.0816
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% NIEUWE OUTPUT (calibratie) %%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Establishing connection to Roomba...
+Setting Roomba to Control Mode...
+I am alive if you just heard me beep
+Drivestraight
+distance:0.5
+speed:0.05
+
+s =
+
+    0.5074
+
+
+th =
+
+    0.0617
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% NIEUWE OUTPUT (calibratie) %%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Establishing connection to Roomba...
+Setting Roomba to Control Mode...
+I am alive if you just heard me beep
+Drivestraight
+distance:0.5
+speed:0.05
+/usr/bin/python2.7 /home/robin/Dropbox/School/2015-2016/Thesis/Code/MATLAB/Server/udp_receive.py 8080: Interrupt
+WARNING:  function did not terminate correctly.  Output may be unreliable.
+WARNING:  function did not terminate correctly.  Output may be unreliable.
+
+s =
+
+    0.5069
+
+
+th =
+
+    0.0737
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% NIEUWE OUTPUT (calibratie) %%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Establishing connection to Roomba...
+Setting Roomba to Control Mode...
+I am alive if you just heard me beep
+Drivestraight
+distance:0.5
+speed:0.05
+
+s =
+
+    0.5041
+
+
+th =
+
+    0.1573
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% NIEUWE OUTPUT (calibratie) %%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Establishing connection to Roomba...
+Setting Roomba to Control Mode...
+I am alive if you just heard me beep
+Drivestraight
+distance:0.5
+speed:0.05
+
+s =
+
+    0.5039
+
+
+th =
+
+    0.0956
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% NIEUWE OUTPUT (calibratie) %%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Establishing connection to Roomba...
+Setting Roomba to Control Mode...
+I am alive if you just heard me beep
+Drivestraight
+distance:0.5
+speed:0.05
+
+s =
+
+    0.5113
+
+
+th =
+
+    0.0797
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% NIEUWE OUTPUT (calibratie) %%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Establishing connection to Roomba...
+Setting Roomba to Control Mode...
+I am alive if you just heard me beep
+Drivestraight
+distance:0.5
+speed:0.05
+
+s =
+
+    0.5111
+
+
+th =
+
+    0.0856
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% NIEUWE OUTPUT (calibratie) %%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Establishing connection to Roomba...
+Setting Roomba to Control Mode...
+I am alive if you just heard me beep
+Drivestraight
+distance:0.5
+speed:0.05
+
+s =
+
+    0.5081
+
+
+th =
+
+    0.1036
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% NIEUWE OUTPUT (calibratie) %%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{Operation terminated by user during <a href="matlab:matlab.internal.language.introspective.errorDocCallback('initLidar', '/home/robin/Dropbox/School/2015-2016/Thesis/Code/MATLAB/Lidar/initLidar.m', 12)" style="font-weight:bold">initLidar</a> (<a href="matlab: opentoline('/home/robin/Dropbox/School/2015-2016/Thesis/Code/MATLAB/Lidar/initLidar.m',12,0)">line 12</a>)
+
+
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('initializeRobot', '/home/robin/Dropbox/School/2015-2016/Thesis/Code/MATLAB/Eigen files/MATLAB files/initializeRobot.m', 33)" style="font-weight:bold">initializeRobot</a> (<a href="matlab: opentoline('/home/robin/Dropbox/School/2015-2016/Thesis/Code/MATLAB/Eigen files/MATLAB files/initializeRobot.m',33,0)">line 33</a>)
+LocalPort = initLidar(IP); %local address of LIDAR (eg 7070)
+
+
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('main', '/home/robin/Dropbox/School/2015-2016/Thesis/Code/MATLAB/Eigen files/MATLAB files/main.m', 10)" style="font-weight:bold">main</a> (<a href="matlab: opentoline('/home/robin/Dropbox/School/2015-2016/Thesis/Code/MATLAB/Eigen files/MATLAB files/main.m',10,0)">line 10</a>)
+[LocalPort, comPort] = initializeRobot('roombaName1');
+} 
+main
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% NIEUWE OUTPUT (calibratie) %%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Establishing connection to Roomba...
+Setting Roomba to Control Mode...
+I am alive if you just heard me beep
+Drivestraight
+distance:0.5
+speed:0.05
+
+s =
+
+    0.5058
+
+
+th =
+
+    0.1195
+

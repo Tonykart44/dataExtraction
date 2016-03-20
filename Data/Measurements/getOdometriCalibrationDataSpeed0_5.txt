@@ -1,0 +1,283 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% NIEUWE OUTPUT (calibratie) %%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Establishing connection to Roomba...
+Setting Roomba to Control Mode...
+I am alive if you just heard me beep
+Drivestraight
+distance:0.5
+speed:0.5
+
+s =
+
+    0.5104
+
+
+th =
+
+    0.0159
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% NIEUWE OUTPUT (calibratie) %%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Establishing connection to Roomba...
+Setting Roomba to Control Mode...
+I am alive if you just heard me beep
+Drivestraight
+distance:0.5
+speed:0.5
+
+s =
+
+    0.5104
+
+
+th =
+
+    0.0239
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% NIEUWE OUTPUT (calibratie) %%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Establishing connection to Roomba...
+Setting Roomba to Control Mode...
+I am alive if you just heard me beep
+Drivestraight
+distance:0.5
+speed:0.5
+
+s =
+
+    0.5123
+
+
+th =
+
+    0.0239
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% NIEUWE OUTPUT (calibratie) %%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Establishing connection to Roomba...
+Setting Roomba to Control Mode...
+I am alive if you just heard me beep
+Drivestraight
+distance:0.5
+speed:0.5
+
+s =
+
+    0.5540
+
+
+th =
+
+    0.0239
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% NIEUWE OUTPUT (calibratie) %%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Establishing connection to Roomba...
+Setting Roomba to Control Mode...
+I am alive if you just heard me beep
+Drivestraight
+distance:0.5
+speed:0.5
+
+s =
+
+    0.5188
+
+
+th =
+
+    0.0319
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% NIEUWE OUTPUT (calibratie) %%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Establishing connection to Roomba...
+Setting Roomba to Control Mode...
+I am alive if you just heard me beep
+Drivestraight
+distance:0.5
+speed:0.5
+
+s =
+
+    0.5030
+
+
+th =
+
+    0.0279
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% NIEUWE OUTPUT (calibratie) %%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Establishing connection to Roomba...
+Setting Roomba to Control Mode...
+I am alive if you just heard me beep
+Drivestraight
+distance:0.5
+speed:0.5
+
+s =
+
+    0.5549
+
+
+th =
+
+    0.0239
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% NIEUWE OUTPUT (calibratie) %%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Establishing connection to Roomba...
+Setting Roomba to Control Mode...
+I am alive if you just heard me beep
+Drivestraight
+distance:0.5
+speed:0.5
+
+s =
+
+    0.5457
+
+
+th =
+
+    0.0279
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% NIEUWE OUTPUT (calibratie) %%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Establishing connection to Roomba...
+Setting Roomba to Control Mode...
+I am alive if you just heard me beep
+Drivestraight
+distance:0.5
+speed:0.5
+
+s =
+
+    0.5698
+
+
+th =
+
+    0.0199
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% NIEUWE OUTPUT (calibratie) %%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Establishing connection to Roomba...
+Setting Roomba to Control Mode...
+I am alive if you just heard me beep
+Drivestraight
+distance:0.5
+speed:0.5
+
+s =
+
+    0.5324
+
+
+th =
+
+    0.0139
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% NIEUWE OUTPUT (calibratie) %%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Establishing connection to Roomba...
+Setting Roomba to Control Mode...
+I am alive if you just heard me beep
+Drivestraight
+distance:0.5
+speed:0.5
+
+s =
+
+    0.5324
+
+
+th =
+
+    0.0378
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% NIEUWE OUTPUT (calibratie) %%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Establishing connection to Roomba...
+Setting Roomba to Control Mode...
+I am alive if you just heard me beep
+Drivestraight
+distance:0.5
+speed:0.5
+
+s =
+
+    0.5331
+
+
+th =
+
+    0.0199
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% NIEUWE OUTPUT (calibratie) %%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Establishing connection to Roomba...
+Setting Roomba to Control Mode...
+I am alive if you just heard me beep
+Drivestraight
+distance:0.5
+speed:0.5
+
+s =
+
+    0.5027
+
+
+th =
+
+    0.0299
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% NIEUWE OUTPUT (calibratie) %%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Establishing connection to Roomba...
+Setting Roomba to Control Mode...
+I am alive if you just heard me beep
+Drivestraight
+distance:0.5
+speed:0.5
+
+s =
+
+    0.5700
+
+
+th =
+
+    0.0219
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% NIEUWE OUTPUT (calibratie) %%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Establishing connection to Roomba...
+Setting Roomba to Control Mode...
+I am alive if you just heard me beep
+Drivestraight
+distance:0.5
+speed:0.5
+
+s =
+
+    0.5083
+
+
+th =
+
+    0.0378
