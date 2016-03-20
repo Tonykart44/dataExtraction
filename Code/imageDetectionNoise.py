@@ -81,20 +81,17 @@ def checkReference(reference, data, accuracy):
                         matchedData.append(matchedPoint)
     
     return matchedData
-
+#==============================================================================
 def getDistribution(filePath, refMeasurements):
     #List containing all corner measurements
     measurements = dE.getMeasurements(filePath,'pos =') 
     
     # Measurements which are not due to random noise
-    filteredMeasurements = checkReference(refMeasurements, measurements, 500) 
-    
-    #Split filtered corners in list of points that belong together
-    measurements_point_A = dE.removeSublistLevel(filteredMeasurements,0)     
+    filteredMeasurements = checkReference(refMeasurements, measurements, 500)  
     
     # Extracting difference in x and y coordinates from split corners
-    x_A = dE.removeSublistLevel(measurements_point_A, 0)
-    y_A = dE.removeSublistLevel(measurements_point_A, 1)
+    x_A = removeSublistLevel(filteredMeasurements, 0)
+    y_A = removeSublistLevel(filteredMeasurements, 1)
     
     # Putting all the differences in one list
     allDifferences = []
@@ -105,7 +102,7 @@ def getDistribution(filePath, refMeasurements):
     mu, std = norm.fit(allDifferences)
     
     return mu, std, allDifferences
-    
+#==============================================================================    
 def removeSublistLevel(masterList, index):
     """
     Function that returns all elements from sublists in a masterlist at index
@@ -142,10 +139,12 @@ def removeSublistLevel(masterList, index):
     else:
         # Getting sublists
         for sublist in masterList:
-            sublistElements.append(sublist)
+            for sub in sublist:
+                sublistElements.append(sub[index])
         
-    return sublistElements    
-
+    return sublistElements
+#==============================================================================
+    
 """ 
 MAIN SCRIPT: USING FUNCTIONS TO EXTRACT DATA
 """
@@ -155,39 +154,28 @@ filePath = dE.getFilePath()
 
 refMeasurements = [['0.4949', '0.5029']] # reference data which is considered correct (from camera)
 
-# DEBUG
-measurements = dE.getMeasurements(filePath,'pos =') 
-filteredMeasurements = checkReference(refMeasurements, measurements, 500) 
-#Split filtered corners in list of points that belong together
-measurements_point_A = dE.removeSublistLevel(filteredMeasurements,0)
-
-# Extracting difference in x and y coordinates from split corners
-x_A = dE.removeSublistLevel(measurements_point_A, 0)
-y_A = dE.removeSublistLevel(measurements_point_A, 1)
-# END DEBUG
-
 # Getting distributions
-#mu, std, allDifferences = getDistribution(filePath, refMeasurements)
-#
-## Plotting the histograms
-#plt.figure(1)
-#plt.hist(allDifferences, bins=25, normed=True, alpha=0.6, color='g')
-#
-## Plot the PDFs
-#plt.figure(1)
-#xmin, xmax = plt.xlim()
-#x = np.linspace(xmin, xmax, 100)
-#p = norm.pdf(x, mu, std)
-#plt.plot(x, p, 'k', linewidth=2)
-#title = "Fit results: mu = %.2f,  std = %.2f" % (mu, std)
-#plt.title(title)
-#
-## Saving figure
-#save_string = raw_input("Do you want to save the figure ? (y/n): ")
-#if save_string == 'y':
-#    savePath = dE.getSavePath()
-#    plt.savefig(savePath + '/imageDetectionNoise.png')
-#elif save_string == 'n':
-#    print('Figure not saved')
-#else:
-#    print('Input invalid, figure not saved')
+mu, std, allDifferences = getDistribution(filePath, refMeasurements)
+
+# Plotting the histograms
+plt.figure(1)
+plt.hist(allDifferences, bins=25, normed=True, alpha=0.6, color='g')
+
+# Plot the PDFs
+plt.figure(1)
+xmin, xmax = plt.xlim()
+x = np.linspace(xmin, xmax, 100)
+p = norm.pdf(x, mu, std)
+plt.plot(x, p, 'k', linewidth=2)
+title = "Fit results: mu = %.5f,  std = %.5f" % (mu, std)
+plt.title(title)
+
+# Saving figure
+save_string = raw_input("Do you want to save the figure ? (y/n): ")
+if save_string == 'y':
+    savePath = dE.getSavePath()
+    plt.savefig(savePath + '/imageDetectionNoise.png')
+elif save_string == 'n':
+    print('Figure not saved')
+else:
+    print('Input invalid, figure not saved')
