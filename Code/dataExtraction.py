@@ -88,14 +88,8 @@ def getMeasurements(filePath, prefix):
          currentMeasurement = []
          startMeasurement = False
          newLineCount = 0
-         
-     print line
-     print newLineCount
-     print startMeasurement
-     
         
- return allMeasurements, lines
- return lines
+ return allMeasurements
 #============================================================================== 
 def getSampleMeasurements(masterListLength, subListLength, sample):
     """
