@@ -4,7 +4,7 @@ Created on Mon Mar 21 13:35:54 2016
 
 @author: Robin Amsters
 
-test file for dataAnalysis
+Data analysis on getFeature data
 """
 
 from dataAnalysis import GetFeature

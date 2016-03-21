@@ -8,9 +8,14 @@ This module is a complete rewrite of several previous loose scripts, except now
 object oriented programming is used to increase efficiëncy.
 
 """
+from math import sqrt, pow
+import matplotlib.pyplot as plt
+import mleq as ML
+import numpy as np
+import os
+from scipy.stats import norm
 from Tkinter import Tk
 from tkFileDialog import askopenfilename, askdirectory
-
 
 class DataAnalysis(object):
 
@@ -95,23 +100,23 @@ class DataAnalysis(object):
             
         return allMeasurements
     
-        def getSampleMeasurements(self, masterListLength, subListLength, sample):
-            """
-                Function that returns a list (masterList) that contains lists (subList)
-                of specified length that contain only the specified number. This can be
-                used to debug functions when no measurements are available
-            """
-            sampleMeasurements  = []
-            
-            sample = [(sample)]    
-            
-            for mlIndex in range(masterListLength):
-                sampleMeasurement = []
-                for slIndex in range(subListLength):
-                    sampleMeasurement.append(sample)
-                sampleMeasurements.append(sampleMeasurement)
-            
-            return sampleMeasurements
+    def getSampleMeasurements(self, masterListLength, subListLength, sample):
+        """
+            Function that returns a list (masterList) that contains lists (subList)
+            of specified length that contain only the specified number. This can be
+            used to debug functions when no measurements are available
+        """
+        sampleMeasurements  = []
+        
+        sample = [(sample)]    
+        
+        for mlIndex in range(masterListLength):
+            sampleMeasurement = []
+            for slIndex in range(subListLength):
+                sampleMeasurement.append(sample)
+            sampleMeasurements.append(sampleMeasurement)
+        
+        return sampleMeasurements
     
     def getLevelOfSublists(self, masterList):
         """
@@ -127,10 +132,55 @@ class DataAnalysis(object):
             source: http://stackoverflow.com/questions/6039103/counting-deepness-or-the-deepest-level-a-nested-list-goes-to
         """
         if isinstance(masterList, list) and len(masterList) > 0:
-            return 1 + max(getLevelOfSublists(item) for item in masterList)
+            return 1 + max(self.getLevelOfSublists(item) for item in masterList)
         else:
             return 0
-  
+    
+    def plotDist(self, data, mu, std, figNum,figName,saveFig = False):
+        
+        figNotSaved = "Figure not saved."
+        inputError = "Incorrect input."
+        
+        # Plotting the histograms
+        plt.figure(figNum)
+        plt.hist(data, bins=25, normed=True, alpha=0.6, color='g')
+        
+        # Plot the PDFs
+        plt.figure(figNum)
+        xmin, xmax = plt.xlim()
+        x = np.linspace(xmin, xmax, 100)
+        p = norm.pdf(x, mu, std)
+        plt.plot(x, p, 'k', linewidth=2)
+        title = "Fit results: mu = %.5f,  std = %.5f" % (mu, std)
+        plt.title(title)
+        
+        # Saving figure
+        if saveFig:
+            saveDir = self.getDirectoryPath()
+            savePath = saveDir + figName
+            
+            if os.path.isfile(savePath):
+              overrideSaveString =  raw_input("File already exists, do you want to override it? (y/n): ")
+              
+              if type(overrideSaveString) == str:
+                  if overrideSaveString == 'y':
+                      plt.savefig(savePath)
+                      plt.show()
+                      
+                  elif overrideSaveString == 'n':
+                      print figNotSaved
+                      
+                  else:
+                      print inputError
+                      print figNotSaved
+            else:
+                 plt.savefig(savePath)
+                 plt.show()
+                 
+        else:
+            print figNotSaved
+            
+               
     def removeSublistLevel(self, masterList, index):
         """
         Function that returns all elements from sublists in a masterlist at index
@@ -173,7 +223,171 @@ class DataAnalysis(object):
 
 class GetFeature(DataAnalysis):
     
-    def __init__(self, refMeasurements):
-        self.filePath = super(GetFeature, self).getFilePath()
+    def __init__(self, refMeasurements, accuracy):
+        self.filePath =  self.getFilePath()
         self.refMeasurements = refMeasurements
+        self.measurements = self.getMeasurements(self.filePath, 'corners_world =')
+        self.accuracy = accuracy
+        
+    def setRef(self, newRef):
+        self.refMeasurements = newRef
+        
+    def setMeasurements(self, newMeaserments):
+        self.measurements = newMeaserments
+        
+    def checkReference(self, returnDiff = False):
+        """
+        Function to check whether a dataset matches the reference close enough
+        
+            INPUT:
+                    reference: reference to match data against, this is a list
+                               containing an arbitrary amount of lists of size 1 or 
+                               2
+                    data: data to be matched with the reference, 
+                          this is a list containing lists containing lists of len 1
+                          or 2
+                    accuracy: parameter that specifies how much data can differ 
+                              from reference and still be accepted as matching
+        
+            OUTPUT
+                    matchedData: a list containing lists of size 1 or 2 of data 
+                                 that has been checked against the reference and 
+                                 accepted according to the specified accuracy. 
+                                 Number inside list represents difference of 
+                                 datapoint with reference
+                                 
+        """
+        matchedData = [] #initalizing output
+        lengthError = '''ERROR: length of input is incorrect, please use only 
+        lists with sublists that have a length of 1 or 2.'''
+        
+        for measurement in self.measurements:
+            
+            matchedPoint = [] #datapoints (list of len 2) that have been matched
+            
+            for point in measurement: #Checking and selecting measurements
+            
+                if not len(point) == 2:
+                    print lengthError
+                    
+                else:
+                    x_p = point[0] #measured x coordinates
+                    y_p = point[1] #measured y coordinates
+        
+                for ref in self.refMeasurements:
+    
+                    if not len(ref) == 2:
+                        print lengthError
+                        
+                    else:
+                        x_ref = ref[0] #reference x coordinates
+                        y_ref = ref[1] #reference u coordinates
+                        
+                        diff_x = float(x_p) - float(x_ref) #difference in x coordinates
+                        diff_y = float(y_p) - float(y_ref) #difference in y coordinates
+                        
+                        pointDiff = [diff_x, diff_y] #difference as list
+                        distance = sqrt(pow(diff_x, 2) + pow(diff_y, 2))
+                        
+                        if distance <= self.accuracy and point not in matchedPoint:
+                            # Add current point to matched points if accepted and not already in matchedPoint
+                            if returnDiff:
+                                matchedPoint.append(pointDiff)
+                            else:
+                                matchedPoint.append(point)
+    
+                        if len(matchedPoint) == len(self.refMeasurements) and matchedPoint not in matchedData:
+                            # Add points to data when all have been matched against a reference and they are not yet in matchedData
+                            matchedData.append(matchedPoint)
+        
+        return matchedData
+    
+    def getPolar(self, carthesianMeasurements):
+        
+        # Outputformat: r,t in tuples inside list
+        
+        polarMeasurements = []
+        for measurement in carthesianMeasurements:
+
+            polarMeasurement = []
+            
+            for point in measurement:
+
+                x_p = float(point[0])
+                y_p = float(point[1])
+                
+                point_pol = ML.cart2pol(x_p, y_p)
+                polarMeasurement.append(point_pol)
+            
+            polarMeasurements.append(polarMeasurement)
+            
+        return polarMeasurements
+                
+    def getDistribution(self, measurements):
+        
+        inputError = "Incorrect input."
+        
+        try:
+
+            len_sublists = len(measurements[0])
+            
+            if len_sublists <= 0:
+                print inputError 
+                
+            elif len_sublists >= 1:
+            
+                measurements_point_A = super(GetFeature, self).removeSublistLevel(measurements, 0)
+                
+                # Extracting r and th coordinates 
+                r_A = super(GetFeature, self).removeSublistLevel(measurements_point_A, 0)
+                th_A = super(GetFeature, self).removeSublistLevel(measurements_point_A, 1)
+                
+                mu_r_A, std_r_A = norm.fit(r_A)
+                params_r_A = (mu_r_A, std_r_A)
+                
+                mu_th_A, std_th_A = norm.fit(th_A)
+                params_th_A  = (mu_th_A, std_th_A)
+                
+                if len_sublists >= 2:
+                    
+                    measurements_point_B = super(GetFeature, self).removeSublistLevel(measurements, 1)
+                    
+                    # Extracting r and th coordinates 
+                    r_B = super(GetFeature, self).removeSublistLevel(measurements_point_B, 0)
+                    th_B = super(GetFeature, self).removeSublistLevel(measurements_point_B, 1)
+                    
+                    mu_r_B, std_r_B = norm.fit(r_B)
+                    params_r_B = (mu_r_B, std_r_B)                    
+                    
+                    mu_th_B, std_th_B = norm.fit(th_B)
+                    params_th_B  = (mu_th_B, std_th_B)
+                    
+
+                    if len_sublists >= 3:
+                        
+                        measurements_point_C = super(GetFeature, self).removeSublistLevel(measurements, 2)
+                    
+                        # Extracting r and th coordinates 
+                        r_C = super(GetFeature, self).removeSublistLevel(measurements_point_C, 0)
+                        th_C = super(GetFeature, self).removeSublistLevel(measurements_point_C, 1)
+                        
+                        mu_r_C, std_r_C = norm.fit(r_C)
+                        params_r_C = (mu_r_C, std_r_C)                    
+                        
+                        mu_th_C, std_th_C = norm.fit(th_C)
+                        params_th_C  = (mu_th_C, std_th_C)
+                        
+                        return params_r_A, params_th_A, r_A, params_r_B, params_th_B, r_B, params_r_C, params_th_C, r_C
+                    else:
+                        return params_r_A, params_th_A, r_A, th_A, params_r_B, params_th_B, r_B, th_B
+                        
+                        if len_sublists > 3:
+                            print inputError     
+                    
+                else:
+                    return params_r_A, params_th_A, r_A
+        
+        except:
+            print inputError
+
     

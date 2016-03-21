@@ -86,7 +86,7 @@ def getDistribution(filePath, refMeasurements):
     measurements = dE.getMeasurements(filePath,'corners_world =') 
     
     # Measurements which are not due to random noise
-    filteredMeasurements = checkReference(refMeasurements, measurements, 0.2) 
+    filteredMeasurements = checkReference(refMeasurements, measurements, 50) 
     
     #Split filtered corners in list of points that belong together
     measurements_point_A = dE.removeSublistLevel(filteredMeasurements,0)
