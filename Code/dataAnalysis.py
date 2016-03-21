@@ -8,7 +8,7 @@ This module is a complete rewrite of several previous loose scripts, except now
 object oriented programming is used to increase efficiëncy.
 
 """
-from math import sqrt, pow
+import math
 import matplotlib.pyplot as plt
 import mleq as ML
 import numpy as np
@@ -18,17 +18,18 @@ from Tkinter import Tk
 from tkFileDialog import askopenfilename, askdirectory
 
 class DataAnalysis(object):
+    
 
-    def getFilePath(self):
+    def getFilePath(self, msg):
         # Selecting file trough GUI
         Tk().withdraw() # we don't want a full GUI, so keep the root window from appearing
-        filePath = askopenfilename() # show an "Open" dialog box and return the path to the selected file
+        filePath = askopenfilename(title = msg) # show an "Open" dialog box and return the path to the selected file
         return filePath
 
-    def getDirectoryPath(self):
+    def getDirectoryPath(self, msg):
         # Selecting directory trough GUI
         Tk().withdraw() # we don't want a full GUI, so keep the root window from appearing
-        filePath = askdirectory() # show an "Open" dialog box and return the path
+        filePath = askdirectory(title = msg) # show an "Open" dialog box and return the path
         return filePath
    
     def getMeasurements(self, filePath, prefix):
@@ -76,7 +77,7 @@ class DataAnalysis(object):
          
         for line in lines:
          
-            if line.count(' ') and startMeasurement:
+            if line.count(' ') and startMeasurement and not line.count('calibratie'):
                 # If the line contains a space and the measurement has started, add this line to the currentMeasurement matrix
                 currentMeasurement.append(line.split())
                 newLineCount = 0
@@ -156,7 +157,7 @@ class DataAnalysis(object):
         
         # Saving figure
         if saveFig:
-            saveDir = self.getDirectoryPath()
+            saveDir = self.getDirectoryPath("Select a folder to save to figure: ")
             savePath = saveDir + figName
             
             if os.path.isfile(savePath):
@@ -224,7 +225,7 @@ class DataAnalysis(object):
 class GetFeature(DataAnalysis):
     
     def __init__(self, refMeasurements, accuracy):
-        self.filePath =  self.getFilePath()
+        self.filePath =  self.getFilePath("Please select a measurement file: ")
         self.refMeasurements = refMeasurements
         self.measurements = self.getMeasurements(self.filePath, 'corners_world =')
         self.accuracy = accuracy
@@ -287,7 +288,7 @@ class GetFeature(DataAnalysis):
                         diff_y = float(y_p) - float(y_ref) #difference in y coordinates
                         
                         pointDiff = [diff_x, diff_y] #difference as list
-                        distance = sqrt(pow(diff_x, 2) + pow(diff_y, 2))
+                        distance = math.sqrt(pow(diff_x, 2) + pow(diff_y, 2))
                         
                         if distance <= self.accuracy and point not in matchedPoint:
                             # Add current point to matched points if accepted and not already in matchedPoint
@@ -301,7 +302,7 @@ class GetFeature(DataAnalysis):
                             matchedData.append(matchedPoint)
         
         return matchedData
-    
+           
     def getPolar(self, carthesianMeasurements):
         
         # Outputformat: r,t in tuples inside list
@@ -389,5 +390,41 @@ class GetFeature(DataAnalysis):
         
         except:
             print inputError
+            
+class GetOdometry(DataAnalysis):
+    
+    def __init__(self):
+        
+        self.refPath = self.getFilePath("Select a reference file: ")
+        self.refMeasurements = self.getReference()
+        
+        self.measurementPath = self.getFilePath("Select a measurement file: ")
+        self.measurements_s = self.getMeasurements(self.measurementPath, "s =")
+        self.measurements_th = self.getMeasurements(self.measurementPath, "th =")
+        
+    def getReference(self):
+        
+        ref_s = []
+        ref_th = []
+        
+        positions = self.getMeasurements(self.refPath, "pos =")      
+
+        for index in xrange(0,len(positions),2):
+            
+            x_1 = float(positions[index][0][0])
+            y_1 = float(positions[index][0][1])
+            x_2 = float(positions[index+1][0][0])
+            y_2 = float(positions[index+1][0][1])
+
+            diff_x = x_1 - x_2
+            diff_y = y_1 - y_2
+            
+            dist = math.sqrt(diff_x**2 + diff_y**2)
+            angle = math.atan(diff_y/diff_x)
+            
+            ref_s.append([dist])
+            ref_th.append([angle])
+            
+        return ref_s, ref_th
 
     
