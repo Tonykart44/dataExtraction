@@ -395,9 +395,10 @@ class GetOdometry(DataAnalysis):
     
     def __init__(self):
         
+        # Setting reference
         self.refPath = self.getFilePath("Select a reference file: ")
-        self.refMeasurements = self.getReference()
-        
+        self.refMeasurements_s, self.refMeasurements_th = self.getReference()
+        # Setting measurements
         self.measurementPath = self.getFilePath("Select a measurement file: ")
         self.measurements_s = self.getMeasurements(self.measurementPath, "s =")
         self.measurements_th = self.getMeasurements(self.measurementPath, "th =")
@@ -407,14 +408,20 @@ class GetOdometry(DataAnalysis):
         ref_s = []
         ref_th = []
         
-        positions = self.getMeasurements(self.refPath, "pos =")      
+        positions = self.getMeasurements(self.refPath, "pos =")  
+        print positions
+        print(len(positions))
 
         for index in xrange(0,len(positions),2):
+            
+            print index
             
             x_1 = float(positions[index][0][0])
             y_1 = float(positions[index][0][1])
             x_2 = float(positions[index+1][0][0])
             y_2 = float(positions[index+1][0][1])
+            
+            print (x_1)
 
             diff_x = x_1 - x_2
             diff_y = y_1 - y_2
@@ -426,5 +433,78 @@ class GetOdometry(DataAnalysis):
             ref_th.append([angle])
             
         return ref_s, ref_th
+        
+    def checkReference(self, dataType):
+        """
+        Function to check whether a dataset matches the reference close enough
+        
+            INPUT:
+                    reference: reference to match data against, this is a list
+                               containing an arbitrary amount of lists of size 1 or 
+                               2
+                    data: data to be matched with the reference, 
+                          this is a list containing lists containing lists of len 1
+                          or 2
+                    accuracy: parameter that specifies how much data can differ 
+                              from reference and still be accepted as matching
+        
+            OUTPUT
+                    matchedData: a list containing lists of size 1 or 2 of data 
+                                 that has been checked against the reference and 
+                                 accepted according to the specified accuracy. 
+                                 Number inside list represents difference of 
+                                 datapoint with reference
+                                 
+        """
+        matchedData = [] #initalizing output
+        lengthError = '''ERROR: length of input is incorrect, please use only 
+        lists with sublists that have a length of 1 or 2.'''
+        
+        if dataType == "s":
+            measurements = self.measurements_s
+            reference = self.refMeasurements_s
+            
+        elif dataType == "th":
+            measurements = self.measurements_th
+            reference = self.refMeasurements_th
+        
+        else:
+            print "Incorrect dataType."
+            measurements = []
+            reference = []
+        
+        index = 0
+        
+        for measurement in measurements:
+            
+            for point in measurement: #Checking and selecting measurements
+            
+                if not len(point) == 1:
+                    print lengthError
+                    
+                else:
+                    dx = point[0] #measured distance or angle -> x
+                    ref = reference[index] #reference to compare to
+    
+                if not len(ref) == 1:
+                    print lengthError
+                    
+                else:
+                    dx_ref = ref[0] #reference x coordinates
+                    diff_x = float(dx) - float(dx_ref) #difference in x variable
+                    distance = abs(diff_x)
+                    matchedData.append(distance)
+                    
+                index += 1
+        
+        return matchedData
+        
+    def getDistribution(self, dx):
+        
+        mu_x, std_x = norm.fit(dx)
+        
+        return mu_x, std_x
+        
+        
 
     
