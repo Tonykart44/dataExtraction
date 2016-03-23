@@ -11,9 +11,10 @@ object oriented programming is used to increase efficiëncy.
 import math
 import matplotlib.pyplot as plt
 import mleq as ML
-import numpy as np
 import os
-from scipy.stats import norm
+import numpy as np
+import matplotlib.mlab as mlab
+import scipy.stats as stats
 from Tkinter import Tk
 from tkFileDialog import askopenfilename, askdirectory
 
@@ -143,16 +144,22 @@ class DataAnalysis(object):
         inputError = "Incorrect input."
         
         # Plotting the histograms
-        plt.figure(figNum)
-        plt.hist(data, bins=25, normed=True, alpha=0.6, color='g')
-        
+        plt.figure(figNum)    
+        num_bins = 5
+#        plt.hist(data, bins=5, normed=1, alpha=0.6, color='g')
+        n, bins, patches = plt.hist(data, num_bins,normed =1, facecolor='green', alpha=0.7, stacked = 1)
+#        y = mlab.normpdf(bins, mu, std)
+        k2, p_val = stats.normaltest(data)
+#        plt.plot(bins, y, '1')
+
         # Plot the PDFs
         plt.figure(figNum)
         xmin, xmax = plt.xlim()
         x = np.linspace(xmin, xmax, 100)
-        p = norm.pdf(x, mu, std)
+
+        p = stats.norm.pdf(x, mu, std)
         plt.plot(x, p, 'k', linewidth=2)
-        title = "Fit results: mu = %.5f,  std = %.5f" % (mu, std)
+        title = "Fit results: mu = %.5f,  std = %.5f, p = %.5f" % (mu, std, p_val)
         plt.title(title)
         
         # Saving figure
@@ -343,10 +350,10 @@ class GetFeature(DataAnalysis):
                 r_A = super(GetFeature, self).removeSublistLevel(measurements_point_A, 0)
                 th_A = super(GetFeature, self).removeSublistLevel(measurements_point_A, 1)
                 
-                mu_r_A, std_r_A = norm.fit(r_A)
+                mu_r_A, std_r_A = stats.norm.fit(r_A)
                 params_r_A = (mu_r_A, std_r_A)
                 
-                mu_th_A, std_th_A = norm.fit(th_A)
+                mu_th_A, std_th_A = stats.norm.fit(th_A)
                 params_th_A  = (mu_th_A, std_th_A)
                 
                 if len_sublists >= 2:
@@ -357,10 +364,10 @@ class GetFeature(DataAnalysis):
                     r_B = super(GetFeature, self).removeSublistLevel(measurements_point_B, 0)
                     th_B = super(GetFeature, self).removeSublistLevel(measurements_point_B, 1)
                     
-                    mu_r_B, std_r_B = norm.fit(r_B)
+                    mu_r_B, std_r_B = stats.norm.fitt(r_B)
                     params_r_B = (mu_r_B, std_r_B)                    
                     
-                    mu_th_B, std_th_B = norm.fit(th_B)
+                    mu_th_B, std_th_B = stats.norm.fit(th_B)
                     params_th_B  = (mu_th_B, std_th_B)
                     
 
@@ -372,10 +379,10 @@ class GetFeature(DataAnalysis):
                         r_C = super(GetFeature, self).removeSublistLevel(measurements_point_C, 0)
                         th_C = super(GetFeature, self).removeSublistLevel(measurements_point_C, 1)
                         
-                        mu_r_C, std_r_C = norm.fit(r_C)
+                        mu_r_C, std_r_C = stats.norm.fit(r_C)
                         params_r_C = (mu_r_C, std_r_C)                    
                         
-                        mu_th_C, std_th_C = norm.fit(th_C)
+                        mu_th_C, std_th_C = stats.norm.fit(th_C)
                         params_th_C  = (mu_th_C, std_th_C)
                         
                         return params_r_A, params_th_A, r_A, params_r_B, params_th_B, r_B, params_r_C, params_th_C, r_C
@@ -409,19 +416,13 @@ class GetOdometry(DataAnalysis):
         ref_th = []
         
         positions = self.getMeasurements(self.refPath, "pos =")  
-        print positions
-        print(len(positions))
 
         for index in xrange(0,len(positions),2):
-            
-            print index
             
             x_1 = float(positions[index][0][0])
             y_1 = float(positions[index][0][1])
             x_2 = float(positions[index+1][0][0])
             y_2 = float(positions[index+1][0][1])
-            
-            print (x_1)
 
             diff_x = x_1 - x_2
             diff_y = y_1 - y_2
@@ -501,7 +502,7 @@ class GetOdometry(DataAnalysis):
         
     def getDistribution(self, dx):
         
-        mu_x, std_x = norm.fit(dx)
+        mu_x, std_x = stats.norm.fit(dx)
         
         return mu_x, std_x
         

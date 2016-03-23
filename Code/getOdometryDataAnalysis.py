@@ -24,5 +24,5 @@ dth = GetOdometry1.checkReference("th")
 mu_ds, std_ds = GetOdometry1.getDistribution(ds)
 mu_dth, std_dth = GetOdometry1.getDistribution(dth)
 
-GetOdometry1.plotDist(ds, mu_ds, std_ds, 1, "/ds_0_0_5", False)
+GetOdometry1.plotDist(ds, mu_ds, std_ds, 1, "/ds_0_05", False)
 GetOdometry1.plotDist(dth, mu_dth, std_dth, 2, "/dth_0_0_5", False)
