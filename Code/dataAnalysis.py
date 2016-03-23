@@ -9,11 +9,11 @@ object oriented programming is used to increase efficiëncy.
 
 """
 import math
+import os
+
 import matplotlib.pyplot as plt
 import mleq as ML
-import os
 import numpy as np
-import matplotlib.mlab as mlab
 import scipy.stats as stats
 from Tkinter import Tk
 from tkFileDialog import askopenfilename, askdirectory
@@ -138,19 +138,15 @@ class DataAnalysis(object):
         else:
             return 0
     
-    def plotDist(self, data, mu, std, figNum,figName,saveFig = False):
+    def plotDist(self, data, mu, std, num_bins, figNum,figName,saveFig = False):
         
         figNotSaved = "Figure not saved."
         inputError = "Incorrect input."
         
         # Plotting the histograms
-        plt.figure(figNum)    
-        num_bins = 5
-#        plt.hist(data, bins=5, normed=1, alpha=0.6, color='g')
+        plt.figure(figNum, figsize  = (20,10))    
         n, bins, patches = plt.hist(data, num_bins,normed =1, facecolor='green', alpha=0.7, stacked = 1)
-#        y = mlab.normpdf(bins, mu, std)
         k2, p_val = stats.normaltest(data)
-#        plt.plot(bins, y, '1')
 
         # Plot the PDFs
         plt.figure(figNum)
@@ -159,7 +155,7 @@ class DataAnalysis(object):
 
         p = stats.norm.pdf(x, mu, std)
         plt.plot(x, p, 'k', linewidth=2)
-        title = "Fit results: mu = %.5f,  std = %.5f, p = %.5f" % (mu, std, p_val)
+        title = "Fit results: mu = %.5f,  std = %.5f, p = %.5g" % (mu, std, p_val)
         plt.title(title)
         
         # Saving figure
@@ -364,7 +360,7 @@ class GetFeature(DataAnalysis):
                     r_B = super(GetFeature, self).removeSublistLevel(measurements_point_B, 0)
                     th_B = super(GetFeature, self).removeSublistLevel(measurements_point_B, 1)
                     
-                    mu_r_B, std_r_B = stats.norm.fitt(r_B)
+                    mu_r_B, std_r_B = stats.norm.fit(r_B)
                     params_r_B = (mu_r_B, std_r_B)                    
                     
                     mu_th_B, std_th_B = stats.norm.fit(th_B)

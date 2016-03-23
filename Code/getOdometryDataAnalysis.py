@@ -9,6 +9,9 @@ test file for dataAnalysis
 
 from dataAnalysis import GetOdometry
 
+saveFigs = True
+numOfBins = 5
+
 GetOdometry1 = GetOdometry()
 
 #DEBUG
@@ -24,5 +27,5 @@ dth = GetOdometry1.checkReference("th")
 mu_ds, std_ds = GetOdometry1.getDistribution(ds)
 mu_dth, std_dth = GetOdometry1.getDistribution(dth)
 
-GetOdometry1.plotDist(ds, mu_ds, std_ds, 1, "/ds_0_05", False)
-GetOdometry1.plotDist(dth, mu_dth, std_dth, 2, "/dth_0_0_5", False)
+GetOdometry1.plotDist(ds, mu_ds, std_ds, numOfBins, 1, "/ds_0_0_5", saveFigs)
+GetOdometry1.plotDist(dth, mu_dth, std_dth, numOfBins, 2, "/dth_0_0_5", saveFigs)
